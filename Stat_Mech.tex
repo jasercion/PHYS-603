@@ -1,0 +1,166 @@
+\documentclass{article}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+
+\makeatletter
+\def\lecture{\@ifnextchar[{\@lectureWith}{\@lectureWithout}}
+\def\@lectureWith[#1]{\medbreak\refstepcounter{section}%
+  \renewcommand{\leftmark}{Lecture \thesection}
+  \noindent{\addcontentsline{toc}{section}{Lecture \thesection: #1\@addpunct{.}}%
+  \sectionfont Lecture \thesection. #1\@addpunct{.}}\medbreak}
+\def\@lectureWithout{\medbreak\refstepcounter{section}%
+  \renewcommand{\leftmark}{Lecture \thesection}
+  \noindent{\addcontentsline{toc}{section}{Lecture \thesection.}%
+  \sectionfont Lecture \thesection.}\medbreak}
+\makeatother
+\newcommand{\pardif}[2]{\frac{\delta#1}{\delta#2}}
+\newcommand{\dif}[2]{\frac{d#1}{d#2}}
+\newcommand{\bltz}{k_{B}}
+
+\title{Lectures on Statistical Mechanics and Thermodynamics}
+\author{Paolo Bedaque}
+\begin{document}
+\maketitle
+
+\chapter{Foundations of Statistical Mechanics}
+
+%\lecture
+The object of Statistical Mechanics is to study systems with a large number of degrees of freedom by focusing solely on the macroscopic properties of the system.  
+
+\begin{figure}
+	\includegraphics[width=0.5\linewidth]{C:/Users/Joe/Documents/Stat_Mech_Notes/Images/mic_to_mac.png}
+	\caption{Multiple microscopic states make up a single macroscopic state of a system.}
+\end{figure}
+
+Why, you may ask, are we only focusing on these macroscopic properties?  Surely, given enough information we could model any system by following its individual members!  This is not necessarily the case because the sheer volume of information necessary to do such a calculation is in fact an impediment to performing such a calculation.  Let's illustrate this using a simple example of a system consisting of 20 particles in the ground state.  Suppose, through divine intervention or otherwise, we have obtained the complete wave equation for each particle in the system.  Before we begin to calculate any properties of this system we must first store this information.  
+
+\begin{figure}
+\centering
+	\begin{minipage}{0,49\textwidth}
+		\frame{\includegraphics[width=0.5\linewidth]{C:/Users/Joe/Documents/Stat_Mech_Notes/Images/fig_1_1.png}}
+		\caption{Wavefunction of our system in dimension $x_{1}$}
+	\end{minipage}
+%	\begin{minipage}{0.49\textwidth}
+%		\frame{\includegraphics[\width=\linewidth]]{imagefile}}
+%		\caption{test}
+%	\end{minipage}
+\label{fig:information_graph}
+\end{figure}
+
+As shown in figure 2, every particle wavefunction will be reasonably approximated by 10 points in each dimension.  Taking the 3-dimensional case, we find that the amount of memory we would need would be $(10)^{3N}*8\simeq10^{61}$ bytes.  We include the factor of 8 since each real number will be represented by 8 bytes.  Assuming we store all of this data on terabyte drives that have a storage capacity of $\frac{10^{12} bytes}{0.4 kgs}$, we find that the total mass of all of the drives required to store the information describing this 20 particle system to be on the order of $10^{49}$ kilograms, which is much much more than the mass of the Milky Way galaxy!  Clearly, it is impossible to store this much information, much less manipulate it.  Therefore, we employ statistics to deal with the system at a macroscopic level. 
+
+\section{Hamiltonian Dynamics}
+
+Consider a hypothetical system consisting of some number of particles which can be described by their individual positions, $q_{i}$ and their momentums, $p_{i}$.  We can indicate the paths these particles travel on a {\bf{Phase Space}} diagram.  
+
+%Insert phase space figure
+
+This diagram displays the evolution of the systems constituent particles as their positions and momentums change.  The evolution of this system is governed by the Hamilton Equations:  $\dif{q_{1}}{t} = \pardif{\mathcal{H}}{p_{i}}$ and $\dif{p_{i}}{t}=-\pardif{\mathcal{H}}{q_{i}}$  The evolution of $p$ and $q$ are clearly deterministic, therefore we can express these values as time-dependant functions.  $q_{i}(t), p_{i}(t) \rightarrow q_{i}(t=0)=q_{i}^{0}$ and $p_{i}(t=0)=p_{i}^0$
+
+There are a couple of tricks we can employ to idealize the measurement process and simplify manipulations of these functions.
+
+\section{Idealization of the Measurement Process}
+
+Let's start by defining some value $\overline{f}$, which is the result of measuring function $f(p_{i},q_{i})$.  
+
+$$\overline{f}=\lim_{T\to\infty}\frac{1}{T}\int_{\delta}^{\delta+T}dtf(q(t),p(t))=\widetilde{f}(q_{i}^0,p_{i}^0)$$
+
+$T=$ duration of the measurement, $\delta=$ time the measurement starts, $\widetilde{f}=$ some function of the initial conditions.
+
+This expression is an idealization of an arbitrary measurement.  In reality, the time T is much larger than the microscopic scales in which the functions of $q(t)$ and $p(t)$ vary.  For example, suppose the function $f$ is the pressure on the wall of a gas containing vessel.  The quantity $f(q(t),p(t))$ flucuates like the diagram below.
+
+%Insert pressure fluctuation diagram
+
+However, except in specialized cases, the measuring apparatus is not accurate enough the capture every tiny fluctuation of the force on the wall of the vessel.  Instead, it measures an average of $f(q(t),p(t))$ over a finite period of time:
+
+%Insert modified pressure fluctuation diagram
+
+Taking the $\lim_{T\to\infty}$ is a mathematical idealization of this averaging out of function fluctuations.  Returning to our analysis of the hypothetical measurement $\overline{f}$, we see that the function $\widetilde{f}(q_{i}^0,p_{i}^0)$ is not really a function of the initial condition.  Rather, it is a function of the \textit{trajectory} of the system evolution.  This may not be immediately apparent, but can be illustrated by choosing another initial point on the trajectory of our function $\widetilde{f}=(q_{i}^0,p_{i}^0)$.  As $T\to\infty$, we see that our new initial points $q_{i}^{0'}$ and $p_{i}^{0'}$ yield the same value of $\widetilde{f}$ as $q_{i}^0$ and $p_{i}^0$.  i.e., $\widetilde{f}(q_{i}^0,p_{i}^0)=\widetilde{f}(q_{i}^{0'},p_{i}^{0'})$  This is because the difference between the two trajectories is neglible compared to the infinite extended trajectories as $T\to\infty$.
+
+%Insert trajectory phase diagram
+
+Now, it could be possible that two different trajectories give different values for $\overline{f}$.
+
+%Insert IC Trajectory phase diagram
+
+However, it turns out that, for systems we are interested in, that it does not happen.  These systems have the property that any individual trajectory will pass through almost \textbf{every} point in phase space.  This is called the \textbf{Ergodic Property}.  
+
+A couple of important things to keep in mind.  The assumption that the trajectory passes through every point in the phase space is contingent on the the assumption that these points have the same value of energy (and any other conserved quantities) as the initial point.  After all, these values are conserved by the Hamiltonian Flow.  The phrase "almost every point" also has a specific meaning, in that it is "almost every point" in the measure theory sense.
+
+It is really difficult to prove that a realistic system has the ergodic property.  Only a few systems have actually been proven rigorously to be ergodic (for example, the Sinai Stadium).  Moving forward, we will operate on the assumption that the systems we are interested are, in fact, ergodic.    
+
+To expand on the concept of ergodicity, it is very easy to find systems that are not ergodic.  Any conserved value restricts the trajectories to lie on a submanifold of the phase space.  If the only conserved quantities are the ones resulting from the standard symmetries (i.e. energy, momeentum, etc.) we can question the validity of ergodicity within the restricted subspace with constant values of these quantities.  There are systems with so many other conserved quantities that the subspace is one dimensional (integrable systems), thereby invalidating the ergodicity of the system.  The Integrable/Ergodic classification is also non-binary, there are intermediate types of systems that exist between the two extremes, such as mixing systems.
+
+\section{Introduction to Thermodynamics}
+
+At its core level, many thermodynamic problems can be phrased as a comparison between two states of a system.  The pre-evolutionary equilibrium state and the post-evolutionary equilibrium state.
+
+%Insert Thermoproblem breakdown diagram.
+
+Since every microstate of the system is equally probably, the final macroscopic state will be the one which corresponds to the largest number of microstates:
+
+$$\Gamma(E_{1}',V_{1}',N_{1}',E_{2}',V_{2}',N_{2}')=\Gamma_{1}(E_{1}',V_{1}',N_{1}')\Gamma_{2}(E_{2}',V_{2}',N_{2}') $$
+
+Where $\Gamma(E_{1}',V_{1}',N_{1}',E_{2}',V_{2}',N_{2}')$ is the number of states of the composite system, $\Gamma_{1}(E_{1}',V_{1}',N_{1}')$ is the number of microstates of subsystem 1, and $\Gamma_{2}(E_{2}',V_{2}',N_{2}')$ is the number of microstates of subsystem 2.
+
+Let's look at the case where the wall between the two subsystems allows the exchange of energy but not of volume or particle number.  In this case we find:
+
+\begin{multline}
+E_{1}+E_{2}=E_{1}'+E_{2}' \\
+V_{1}=V_{1}', V_{2}=V_{2}' \\
+N_{1}=N_{1}', N_{2}=N_{2}' \\
+\Gamma(E_{1}',E_{2}')=\Gamma_{1}(E_{1}')\Gamma_{2}(E_{2}')
+\end{multline}
+
+This implies that
+
+$$\Gamma_{Max, E_{total} fixed}\Leftrightarrow\frac{1}{\Gamma_{1}}\dif{\Gamma_{1}(E_{1}')}{E_{1}'}-\frac{1}{\Gamma_{2}(E_{2}')}\dif{\Gamma_{2}(E_{2}')}{E_{2}'}=0$$  
+
+So, knowing the total number of initial microstates of the two subsystems allows us to predict the final state of the overall system.  This is summed up in a very clean and useful fashion in the definition of \textbf{entropy}:
+
+$$S=\bltz\ln(\Gamma)$$
+   
+Notice that entropy is extensive as long as the subsystems are large enough that the boundary effects are negligible.
+
+\textit{How can Entropy grow?}
+
+Within the constraints of the problem, there is an apparent paradox in staying that the entropy is maximized.  That's because, using Hamiltonian equations, we can show S is a constant.
+
+Define $\rho(q,p,t=0)$ to be an initial distribution of identical systems (this is called an \textbf{ensemble}.)  As the Hamiltonian Flow evolves in time every element of the ensemble is carried with it and the distribution evolves to $\rho(q,p,t)=\rho(q(t),p(t))$.
+
+%Insert flow evolution diagram
+
+Because the number of systems in the ensemble is fixed $\rho$ obeys the continuity equation:
+
+$$\dif{\rho}{t}+\nabla*(\rho\nabla)=0$$
+or
+\begin{equation}
+\begin{split}
+0=\pardif{\rho}{t}+\sum_{i=1}^{3N}[\pardif{(\rho\dot{q_{i}})}{q_{i}}+\pardif{\rho\dot{p_{i}}}{p_{i}}] \\
+	=\pardif{\rho}{t}+
+\end{split}	 
+\end{equation}
+%Finish Equation
+
+This result is known as the \textbf{Liouville Theorem}.  It implies that the density of elements on the ensemble does not change as it evolves along the Hamiltonian Flow (of course, it does change at any fixed position in phase space).  As the number of systems in the ensemble is fixed, the Liouville Theorem implies that the volume of the phase space occupied by the ensemble is fixed.  
+
+This means that the entropy, being the log of the volume, cannot change either.  So how can the entropy grow if the microscopic equations of motion show that it does not?  A resolution to this paradox is to notice that, for systems in which statistical mechanics holds, the Hamiltonian Flow takes nice looking, civilized ensembles and turns them into convoluted shapes:
+
+%Insert convoluted flow diagram
+
+The average of smooth observables (i.e. the value of $f(q,p)$) does not distinguish between the average performed with the true $\rho(t)$ or the "coarse grained" $\widetilde{\rho}(t)$, as shown below.
+
+%Insert convoluted flow diagram 2
+
+$$\overline{f}=\int_{}^{}dqdpf(q,p)\rho(q,p,t)\simeq\int_{}^{}dqdpf(q,p)\widetilde{\rho}(q,p,t)$$
+
+For all practical purposes, the entropy grows so long as we only look at observables that are very smooth.  Macroscopic observables don't care about the precise poition of the particles and tend to be smooth in phase space.  Systems whose Hamiltonian Flow have this property are called "\textbf{Mixing}."  It is easy to show that ergodic systems are mixing, but keep in mind that mixing systems are not necessarily ergodic.    
+
+\chapter{Thermodynamics}
+
+
+
+
+\end{document}
