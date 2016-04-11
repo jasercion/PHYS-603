@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass{book}
 \usepackage{amsthm}
 \usepackage{amsmath}
 \usepackage{graphicx}
@@ -160,7 +160,27 @@ For all practical purposes, the entropy grows so long as we only look at observa
 
 \chapter{Thermodynamics}
 
+From the general property of entropy we can derive a massive amount of information about a system.  In fact, if the entropy as a function of extensive variables is known, everything else about the thermodynamic behavior of the system can be found!  The definition of entropy is reiterated below:
 
+$$S=\bltz\ln(\Gamma)$$
 
+We include the Boltzmann Constant, $\bltz$, for historical reasons.  However, if we judiciously choose our units (by measuring temperature in units of energy, as we should) we can set $\bltz=1$.  A good thing to remember in this regard is that $10,000K\simeq1eV$.  
+
+Since entropy is so important, let's review a few properties satisfied by the entropy:
+
+\begin{itemize}
+	\item S as a function of the \underline{extensive} variables contains all the information about a system that you need.
+	\item S is itself extensive: $S(\lambdaE,\lambdaV,\lambdaN)=\lambdaS(E,V,N)$
+	\item $\pardif{S}{E}\geq0$  We will eventually see that this implies $T\geq0$
+	\item $S(E,V,N)$ is a concave function.  We will eventually see that this implies stability: \\
+	$S(E+\DeltaE,V+\DeltaV,N+\DeltaN)+S(E-\DeltaE,V-\DeltaV,N-\DeltaN)\leq2S(E,V,N)$\\ 
+		%insert plot of S showing concavity
+	\item $S=0$ at $\frac{1}{\pardif{S}{E}}=0 (T=0)$  This property depends on how we normalize the number of microstates, $\Gamma$.  Quantum mechanics determines the right normalization that implies $S(T=0)-0$
+	\item $S$ is maximized in equilibrium within the constraints set by the physical setup.  This is a direct consequence of the fact that all microstates are equally probable.
+\end{itemize}
+
+Inverting the entropy function $S(E,V,N)$ allows us to obtain a function for the energy of the system in terms of entropy: $E(S,V,N)$.  If $S,V,N$ are changed slowly (i.e. \]textbf{"adiabatically"}) so that the system stays in equilibrium at all intermediate states we find:
+
+$$dE=\pardif{E}{S}   
 
 \end{document}
