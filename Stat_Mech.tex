@@ -3,6 +3,7 @@
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage{wrapfig}
+\usepackage{tabu}
 
 \makeatletter
 \def\lecture{\@ifnextchar[{\@lectureWith}{\@lectureWithout}}
@@ -16,8 +17,10 @@
   \sectionfont Lecture \thesection.}\medbreak}
 \makeatother
 \newcommand{\pardif}[2]{\frac{\delta#1}{\delta#2}}
+\newcommand{\thermdif}[4]{\frac{\delta#1}{\delta#2}\vert_{#3,#4}}
 \newcommand{\dif}[2]{\frac{d#1}{d#2}}
 \newcommand{\bltz}{k_{B}}
+\newcommand{\sumser}[2]{\sum\limits_{#1}^{#2}}
 
 \title{Lectures on Statistical Mechanics and Thermodynamics}
 \author{Paolo Bedaque}
@@ -170,17 +173,98 @@ Since entropy is so important, let's review a few properties satisfied by the en
 
 \begin{itemize}
 	\item S as a function of the \underline{extensive} variables contains all the information about a system that you need.
-	\item S is itself extensive: $S(\lambdaE,\lambdaV,\lambdaN)=\lambdaS(E,V,N)$
+	\item S is itself extensive: $S(\lambda*E,\lambda*V,\lambda*N)=\lambda*S(E,V,N)$
 	\item $\pardif{S}{E}\geq0$  We will eventually see that this implies $T\geq0$
 	\item $S(E,V,N)$ is a concave function.  We will eventually see that this implies stability: \\
-	$S(E+\DeltaE,V+\DeltaV,N+\DeltaN)+S(E-\DeltaE,V-\DeltaV,N-\DeltaN)\leq2S(E,V,N)$\\ 
+	$S(E+\Delta*E,V+\Delta*V,N+\Delta*N)+S(E-\Delta*E,V-\Delta*V,N-\Delta*N)\leq2S(E,V,N)$\\ 
 		%insert plot of S showing concavity
 	\item $S=0$ at $\frac{1}{\pardif{S}{E}}=0 (T=0)$  This property depends on how we normalize the number of microstates, $\Gamma$.  Quantum mechanics determines the right normalization that implies $S(T=0)-0$
 	\item $S$ is maximized in equilibrium within the constraints set by the physical setup.  This is a direct consequence of the fact that all microstates are equally probable.
 \end{itemize}
 
-Inverting the entropy function $S(E,V,N)$ allows us to obtain a function for the energy of the system in terms of entropy: $E(S,V,N)$.  If $S,V,N$ are changed slowly (i.e. \]textbf{"adiabatically"}) so that the system stays in equilibrium at all intermediate states we find:
+Inverting the entropy function $S(E,V,N)$ allows us to obtain a function for the energy of the system in terms of entropy: $E(S,V,N)$.  If $S,V,N$ are changed slowly (i.e. \textbf{"adiabatically"}) so that the system stays in equilibrium at all intermediate states we find:
 
-$$dE=\pardif{E}{S}   
+$$dE=\thermdif{E}{S}{V}{N}dE+\thermdif{S}{V}{E}{N}dV+\thermdif{S}{N}{E}{V}dN$$
+
+where
+
+$$\thermdif{S}{E}{V}{N}=\frac{1}{T}, \thermdif{S}{V}{E}{N}=\frac{P}{T}, \thermdif{S}{N}{E}{V}=\frac{\mu}{T}$$
+
+To derive the first relation, we used $\thermdif{E}{S}{V}{N}=\frac{1}{den}$
+
+%Finish equation of state section
+
+It's important to note that S is defined for equilibrium macroscopic states only.  So dS or dE refer to changes slow enough such that the system continuously remains in equilibrium during its transition from its initial state to its final state.  i.e., at any given time during the transition the system is in an equilibrium state.  For instance, if the volume is changed suddenly and then the system is left to relax to equilibrium the change in entropy is not given by $\frac{p}{T}dV$ (it will, in fact, be larger). 
+
+From these relations we can derive the Equations of State:
+
+\begin{tabu} to 0.8\textwidth { | X[l] | X[r] | }
+	\hline
+	$T=\thermdif{E}{S}{V}{N}=T(S,V,N)$ & $\frac{1}{T}=\thermdif{S}{E}{V}{N}=\frac{1}{T(E,V,N)}$ \\
+	\hline
+	$-P=\thermdif{E}{V}{S}{N}=P(S,V,N)$ & $-\frac{P}{T}=\thermdif{S}{V}{E}{N}=-\frac{P(E,V,N)}{T(E,V,N)}$ \\
+	\hline
+	$\mu=\thermdif{E}{N}{S}{V}=\mu(S,V,N)$ & $\frac{\mu}{T}=\thermdif{S}{N}{E}{V}=\frac{\mu(E,V,N)}{T(E,V,N)}$ \\
+	\hline
+\end{tabu}
+
+These equations of state are particularly important because they are frequently accessible to experiments.  Notice that the same quantities as functions of other variables are \underline{not} equations of state and may not contain the same information. 
+
+As mentioned earlier, all thermodynamical problems can be reduced to a transition between two states of a system:
+
+%Insert diagram
+
+Depending on the properties of the wall between the two subsystems, we find that:
+
+\begin{itemize}
+	\item Wall allows Energy exchange $\rightarrow T_{1}' = T_{2}'$
+	\item Wall allows Volume exchange $\rightarrow V_{1}' = V_{2}'$
+	\item Wall allows Particle exchange $\rightarrow \mu_{1}' = \mu_{2}'$
+\end{itemize}
+
+\section{Non-Relativistic, Non-Interacting, Monoatomic Gas}
+
+Let us compute the entropy, S, for one example:
+
+$$\mathcal{H}(\mathbb{r}_i},\mathbb{p}_i)=\sumser{i=1}{N}\frac{\mathbb{p}_{i}^{2}}{2m}, (0<\mathbb{r}_{i}<L)$$
+
+\begin{equation}
+\begin{split}
+\Gamma(E,V,N)=\int\prod_{i=1}^{N}d\mathbb{r}_{i}\mathbb{p}_{i}\delta(E-sumser{i=1}{N}\frac{\mathbb{p}_{i}^{2}}{2m}) \\ 
+	=[\int_{0}^{L}dx]^{3N}\int_{-\infty}^{\infty}dp_{ix}dp_{iy}dp_{iz}....dp_{nx}dp_{ny}dp_{nz}*2m\delta(2mE-\sumser{i=1}{3N}p_{i}^2) \\
+	=V^{N}2mS^{3N}(R=\sqrt{2mE}) \\
+	=2mV^{N}\frac{2\pi^{\frac{3N}{2}}}{\Gamma(\frac{3N}{2})}(2mE)^{\frac{3N-1}{2}} 
+\end{split}
+S=\bltz\ln{\Gamma}=\bltz[N\ln{V}+\frac{3N-1}{2}\ln{E}-\ln{\Gamma(\frac{3N}{2})}+\frac{3N}{2}\ln{\sum}+Constant]\overrightarrow{N\rightarrow\infty}\bltz[N\ln{V}+\frac{3N}{2}\ln{E}-\frac{3N}{2}\ln{N}+\frac{3}{2}N\ln{\prod}]=N\bltz\ln{\frac{VE^{\frac{3}{2}}}{N^{\frac{3}{2}}}}
+\end{equation}
+The above expression violates extensivity (2) and the Neust Postulate (5).  The violation of the Neust Postualte is not surprising: the behavior of a gas at T=0 is dictated by quantum mechanics, not classical mechanics (the atoms wavelength is much larger than the separation between them).  What is surprising is that quantum mechanics connects the calculation above even at large T.  What is missing from the classical calculation above is that the gas is composed of \underline{identical} particles (bosons or fermions, it doesn't matter at high T).  So the correct way of counting states is:
+
+$$S=\bltz\ln{\Gamma}=\bltz\int\prod_{i=1}^{N}\frac{dq_{i}dp_{i}}{N!h^N}\delta(E-\sumser{i=1}{N}\frac{\mathbb{p}_{i}^2}{2m})$$
+
+The denominator factor of $N!$ avoids double counting of microstates with the same particle position and the factor of $h^{N}$ becomes important when considering the classical limit of quantum gases.
+
+As the number of particles in the system becomes very large we find that the expression becomes
+
+$$S=\bltz*N\ln{\frac{VE^{\frac{3}{2}}}{N^{\frac{5}{2}}}}$$
+
+From this entropy we can find the equations of state:
+
+\begin{tabu} to 0.8\textwidth { | X[l] | X[r] | }
+	\hline
+	$\frac{1}{T}=\thermdif{S}{E}{V}{N}=\frac{3}{2}\frac{\bltz*N}{E}$ & $E=\frac{3}{2}\bltz*N*T$ \\
+	\hline
+	$-\frac{P}{T}=\thermdif{S}{V}{E}{N}=-\frac{\bltz*N}{V}$ & $PV=\bltz*NT$ \\
+	\hline
+	$\frac{\mu}{T}=\thermdif{S}{N}{E}{V}=\bltz\ln{\frac{VE^{\frac{3}{2}}}{N^{\frac{5}{2}}}}-\frac{5}{2}\bltz$ & $$ \\
+	\hline
+\end{tabu}
+
+Note that we found the Boyle-Mariott law without even discussing atoms colliding against walls or other kinetic theory considerations.  There's a lot behind the assumption of ergodicity.  
+
+This leads us to....
+
+\section{Euler Relation}
+
+$$S(\lambda*E,\lambda*V,\lambda*N)=\lambda*S(E,V,N)$$
 
 \end{document}
