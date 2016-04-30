@@ -1,6 +1,7 @@
 \documentclass{book}
 \usepackage{amsthm}
 \usepackage{amsmath}
+\usepackage{amsfonts}
 \usepackage{graphicx}
 \usepackage{wrapfig}
 \usepackage{tabu}
@@ -226,7 +227,7 @@ Depending on the properties of the wall between the two subsystems, we find that
 
 Let us compute the entropy, S, for one example:
 
-$$\mathcal{H}(\mathbb{r}_i},\mathbb{p}_i)=\sumser{i=1}{N}\frac{\mathbb{p}_{i}^{2}}{2m}, (0<\mathbb{r}_{i}<L)$$
+$$\mathcal{H}(\mathbb{r}_{i},\mathbb{p}_{i})=\sumser{i=1}{N}\frac{\mathbb{p}_{i}^{2}}{2m}, (0<\mathbb{r}_{i}<L)$$
 
 \begin{equation}
 \begin{split}
@@ -255,7 +256,7 @@ From this entropy we can find the equations of state:
 	\hline
 	$-\frac{P}{T}=\thermdif{S}{V}{E}{N}=-\frac{\bltz*N}{V}$ & $PV=\bltz*NT$ \\
 	\hline
-	$\frac{\mu}{T}=\thermdif{S}{N}{E}{V}=\bltz\ln{\frac{VE^{\frac{3}{2}}}{N^{\frac{5}{2}}}}-\frac{5}{2}\bltz$ & $$ \\
+	$\frac{\mu}{T}=\thermdif{S}{N}{E}{V}=\bltz\ln{\frac{VE^{\frac{3}{2}}}{N^{\frac{5}{2}}}}-\frac{5}{2}\bltz$ & $ $ \\
 	\hline
 \end{tabu}
 
@@ -280,6 +281,130 @@ $$S=\frac{E}{T}-\frac{PV}{T}+\frac{\mu*N}{T}$$
 
 If three equations of state are availible:
 
+$$T(S,V,N)=\thermdif{E}{S}{V}{N}$$
+$$-P(S,V,N)=\thermdif{E}{V}{S}{N}$$
+$$\mu(S,V,N)=\thermdif{E}{N}{S}{V}$$
+
+$$\rightarrow E(S,V,N)=T(S,V,N)=T(S,V,N)S-P(S,V,N)V+\mu(S,V,N)N$$
+
+If only two equations of state are availible: $E(S,V,N)=NE(\frac{S}{N},\frac{V}{N},1)$
+
+The equality above is due to extensivity.
+
+$$T=\thermdif{E}{S}{V}{N}=T(S,V,N)=T(\frac{S}{N},\frac{V}{N},1)$$
+
+$$-P=\thermdif{E}{V}{S}{N}=P(S,V,N)=P(\frac{S}{N},\frac{V}{N},1)$$
+
+Note that there is no N!.  T and P are intensive.
+
+$$\downarrow$$
+
+$$E(\frac{S}{V},\frac{V}{N},1)=\int_{0}^{\frac{S}{N}}d(\frac{S}{N})T(\frac{S}{N},\frac{V}{N},1)+E(0,\frac{V}{N},1)=\int_{0}^{\frac{S}{N}}d(\frac{S}{N})T(\frac{S}{N},\frac{V}{N},1)-\int_{0}^{\frac{V}{N}}d(\frac{V}{N})P(0,\frac{V}{N},1)+E(0,0,1)$$
+
+In the above expressions, $T(\frac{S}{N},\frac{V}{N},1)=\thermdif{E}{S}{V}{N}$ and $E(0,0,1)=E(\frac{S}{N},\frac{V}{N},1)$.  The latter equality can be found up to one constant independant of S,V, or N.
+
+Now, if only one equation of state is availible, you cannot recover the entropy or energy.  There is simply not enough information in a single equation of state to extract these system properties.  
+
+\subsection{EXAMPLE: Non-relativistic, Monoatomic, Non-interacting Gas}
+
+$$S=\bltz*N\ln{\frac{VE^{\frac{3}{2}}}{N^{\frac{5}{2}}}}, E=(\frac{N^{\frac{5}{2}}}{V}e^{\frac{S}{\bltz*N}})^\frac{2}{3}=\frac{N^{\frac{5}{2}}}{V^{\frac{2}{3}}}*e^{\frac{2S}{3\bltz*N}}$$
+
+$$T=\thermdif{E}{S}{V}{N}=\frac{2}{3\bltz*N}\frac{N^\frac{5}{3}}{V^\frac{2}{3}}e^\frac{2S}{3\bltz*N}$$
+
+$$-P=\thermdif{E}{V}{S}{N}=-\frac{2}{3}\frac{N^\frac{5}{3}}{V^\frac{5}{3}}e^\frac{2S}{3\bltz*N}$$
+
+$$E(\frac{S}{N},\frac{V}{N},1)=\int_{0}^{\frac{S}{N}}d(\frac{S}{N})\frac{2}{3\bltz}(\frac{N}{V})^{\frac{2}{3}}e^{\frac{2S}{3\bltz*N}}-\int_{0}^{\frac{V}{N}}d(\frac{V}{N})\frac{2}{3}(\frac{N}{V})^{\frac{5}{3}}+E(0,0,1)$$
+
+$$E(\frac{S}{N},\frac{V}{N},1)=\frac{2}{3\bltz}(\frac{N}{V})^{\frac{2}{3}}\frac{3\bltz*N}{2}[e^{\frac{2S}{3\bltz*N}}-1]-\frac{2}{3}(\frac{-3}{2})(\frac{N}{V})^\frac{2}{3}$$
+
+$$E(\frac{S}{N},\frac{V}{N},1)=\frac{N^{\frac{5}{3}}}{V^{\frac{1}{3}}}e^{\frac{2S}{3\bltz*N}}$$
+
+\section{Minimum Energy Principle}
+
+Before formally stating the minimum energy principle, let's begin with an analogy.  We know that a circle is the figure with the largest area for a given perimeter.  Of course, it is also the the figure with the smallest perimeter for a given area.  Even if a given circle was built by someone with a fixed length string trying to enclose the largest area it will still be true that the final circle minimizes the perimeter for the given area.  
+
+The same thing is true for the maximum entropy principle.  After some constraints are changed the final state will be the one with the largest entropy for a given \textbf{total} energy (the constraint that the total energy is unchanged is always there).  But the final equilibrium state can also be characterized as the state with the smallest energy for a fixed entropy:
+
+%Insert entropy surface diagrams
+
+Convince yourself that S as a function of total E and subsystem energy $E_{1}^{1}$ has the general shape depicted above.  The minimum energy principle follows from the picture above.  
+
+Now let's see how the minimum energy principle works in our archetypal example   :
+
+%Insert thermo diagram
+
+$$E=E_{1}(S_{1}^{1},V_{1},N_{1})+E_{2}(S_{2}^{'},V_{2},N_{2})$$
+
+Where $S_{2}^{'}=S-S_{1}^{'}$.
+
+Therefore, we find that the minimum energy, E, for fixed entropy, S, is:
+
+$$\pardif{E}{S_{1}^{'}}=0 \rightarrow \pardif{E_{1}}{S_{1}^{'}}-\pardif{E_{2}}{S_{2}^{'}}=0 \rightarrow T_{1}=T_{2}$$
+
+Which confirms what we expected: In its final state our example subsystem pair reaches an equilibrium temperature.
+
+\section{Efficiency of Engines}
+
+In our thermodynamic terminology, an 'engine' is a machine that extracts work from the the energy difference between two systems in contact.  To clarify, the engine takes energy from the 'hot' source, uses some of that energy to perform work, and ejects the remaining energy into the 'cold' sink.  In many cases, the 'cold' sink is the atmosphere: one example where this is true is a car engine, which throws off heat as it performs the work of moving the car.  
+
+In designing our thermodynamic engine, we would like it to perform this energy transfer over and over again in a closed cycle.  I.e. we want the system to end up in the same macroscopic state as it started.  For our purposes right now we will assume that all changes in the system caused by the energy transfers occur slowly (adiabatically) so, that at every point in the cycle the machine is in equilibrium and its macroscopic state is specified by E,V,N or S,V,N.  It turns out, that for thermodynamic calculations it is better to use the variables T,S,N instead.  In our engine we want to keep N fixed by having impermeable walls separating the machine from the rest of the Universe.  This machine cycle can be represented by a closed loop in the TxS space:
+
+%Insert engine cycle diagram
+
+Let us start by considering one specific cycle, the \textbf{Carnot Cycle}:
+
+%Insert Carnot Cycle/Piston diagrams
+
+%Insert Carnot Cycle explaination diagram
+
+For a fixed N: $dE=TdS-PdV$ so that 
+
+$$\Delta Q_{1}=\int_{S_{1}}^{S_{2}}TdS=T_{h}(S_{2}-S_{1})$$
+$$\Delta Q_{2}=\int_{S_{2}}^{S_{1}}TdS=-T_{c}(S_{2}-S_{1})$$
+
+%Insert Carnot explaination diagram
+
+Since after a full cycle the energy of the system goes back to what it was in the beginning we find:
+
+$$\Delta Q_{1}+\Delta Q_{2}=\Delta W=$$ the area inside the cycles in the TxS plane.
+
+In the expression above, $\Delta Q_{1}+\Delta Q_{2}$ is the net heat absorbed by the system and $\Delta W$ is the work done \textbf{by} the system.  
+
+%Insert Carnot cycle deltaW diagram
+
+For practical reasons, we would like to get as much work as possible from a given amount of heat absorbed.  The efficiency of the engine is defined as"
+
+$$\epsilon=\frac{\Delta W}{\Delta Q_{1}}=\frac{(T_{h}-T_{c})(S_{2}-S_{1})}{T_{h}(S_{2}-S_{1})}=1-\frac{T_{c}}{T_{h}}<1$$
+
+Now, one very important thing to note about this expression is that the total efficiency is \textit{less than} not \textit{less than or equal to} one because some of the energy is wasted and dispersed into the cold sink.  This begs the question: is there a way that we could change the cycle to obtain a larger efficiency? 
+
+%Insert diagrams 
+
+Going back to our TxS plane, we would want to maximize the area inside of the cycle ($\Delta W$) and minimize the area below the top curve ($\Delta Q_{1}$).  It's clear, for instance, that the cycle on the left can have its efficiency improved by changing it as shown below.  We end up then with the Carnot cycle, which is the best that can be done.  Thus, we have the universal result:
+
+$$\epsilon\leq1-\frac{T_{c}}{T_{h}}$$  
+
+Notice that we only used the fact that an ideal gas was used inside the engine to describe the different phases of the cycle in words.  The main result, $E\leq1-\frac{T_{c}}{T_{h}}$ does not depend on that and is valid universally.  
+
+Finally, let us revisit the assumption of adiabaticity, namely, that all phases of the cycle were infinitely slow.  In each phase of the cycle the machine foes from the one initial state A to a final state B exchanging a certain amount of heat $\Delta Q$ (with a source at temperature T) and performing some work $\Delta W$ (positive or negative).  I'll assume the work is done on a reversible work source, namely, a system which can exchange work but not heat (a paper weight on top of a piston is an example).  Similarly, heat is exchanged with a reversible heat source.
+
+%Insert heat exchange diagram
+
+For given initial and final states A and B (and consequently, given changes in energy $E_{B}-E_{A}$ and entropy) the maximum amount of work will be delivered if $\Delta Q$ is a minimum as $E_{B}-E_{A}=-(\Delta W+\Delta Q)$.  The process with the smallest $\Delta Q$ will correspond to the smallest possible increase of the entropy of the universe (system+heat source, the work source has no entropy).  How much is the minimum amount of heat to be transferred to the heat source?  As the total entropy of the universe must increase (otherwise the system would stay at A) we have 
+
+$$S_{B}-S_{A}+T_{r}\Delta Q\geq0$$
+
+Where $T_{r}$ is the temperature of the heat source.  That means that the minimum amount of heat "wasted" on the heat source happens when the total entropy of the universe is unchanged as is given by 
+
+$$\Delta Q=\frac{S_{A}-S_{B}}{T_{r}}$$
+
+If more heat than $\frac{S_{A}-S_{B}}{T_{r}}$ is delivered to the heat source the universe's entropy will increase and less work will be delivered to the work source.  A similar analysis applies when the system is absorbing heat or work.  The main point is that \textbf{reversible processes}, those where the entropy of the universe does not change, lead to the maximum efficiency.  Thus, our bound on the efficiency of an engine obtained assuming adiabaticity, is not violated by non-adiabatic processes.  Notice that the adiabaticity condition means that the engine works really slowly.  Practical Machines, which need to do their job fast, are not adiabatic and much less efficient than the theoretical limit would expect (roughly a factor of 3 less efficient).
+
+\section{Thermodynamic Stability}
+
+We determined the equilibrium condition between two subsystems: 
+
+   
 
 
 
