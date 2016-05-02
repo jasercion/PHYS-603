@@ -1,10 +1,11 @@
-\documentclass{book}
+\documentclass{article}
 \usepackage{amsthm}
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{graphicx}
 \usepackage{wrapfig}
 \usepackage{tabu}
+\graphicspath {{Images/}}
 
 \makeatletter
 \def\lecture{\@ifnextchar[{\@lectureWith}{\@lectureWithout}}
@@ -30,13 +31,13 @@
 \begin{document}
 \maketitle
 
-\chapter{Foundations of Statistical Mechanics}
+\part{Foundations of Statistical Mechanics}
 
 %\lecture
 The object of Statistical Mechanics is to study systems with a large number of degrees of freedom by focusing solely on the macroscopic properties of the system.  
 
 \begin{figure}
-	\includegraphics[width=0.5\linewidth]{C:/Users/Joe/Documents/Stat_Mech_Notes/Images/mic_to_mac.png}
+	\includegraphics[width=0.5\linewidth]{Images/mic_to_mac.png}
 	\caption{Multiple microscopic states make up a single macroscopic state of a system.}
 \end{figure}
 
@@ -45,7 +46,7 @@ Why, you may ask, are we only focusing on these macroscopic properties?  Surely,
 \begin{figure}
 \centering
 	\begin{minipage}{0,49\textwidth}
-		\frame{\includegraphics[width=0.5\linewidth]{C:/Users/Joe/Documents/Stat_Mech_Notes/Images/fig_1_1.png}}
+		\frame{\includegraphics[width=0.5\linewidth]{Images/fig_1_1.png}}
 		\caption{Wavefunction of our system in dimension $x_{1}$}
 	\end{minipage}
 %	\begin{minipage}{0.49\textwidth}
@@ -164,7 +165,7 @@ $$\overline{f}=\int_{}^{}dqdpf(q,p)\rho(q,p,t)\simeq\int_{}^{}dqdpf(q,p)\widetil
 
 For all practical purposes, the entropy grows so long as we only look at observables that are very smooth.  Macroscopic observables don't care about the precise poition of the particles and tend to be smooth in phase space.  Systems whose Hamiltonian Flow have this property are called "\textbf{Mixing}."  It is easy to show that ergodic systems are mixing, but keep in mind that mixing systems are not necessarily ergodic.    
 
-\chapter{Thermodynamics}
+\part{Thermodynamics}
 
 From the general property of entropy we can derive a massive amount of information about a system.  In fact, if the entropy as a function of extensive variables is known, everything else about the thermodynamic behavior of the system can be found!  The definition of entropy is reiterated below:
 
@@ -480,7 +481,7 @@ $$-\frac{1}{VT}[-\frac{1}{V}\thermdif{V}{P}{T}{ }]^{-1}=-\frac{1}{VT}\frac{1}{R_
 	
 We have defined a new quantity above, $R_{T}$.  The quantity is the \textbf{Isothermal Compressibility} of the gas.  The stability condition we defined earlier implies that the isothermal compressiblity is positive, however, this result is not immediately obvious.  A negative compressibility would mean that the system expands as the pressure increases.  This behaviour would increase the pressure of the other system leading to a runaway expansion of our observed system.
 
-\chapter{Canonical Ensemble}
+\part{Canonical Ensemble}
 
 %Insert Canonical ensemble resevoir diagram
 
@@ -560,7 +561,41 @@ Previously we have argued that the averages of observables computed in the canon
 
 Suppose $f(x)$ is not known but $f(p)$, where $p=\dif{f}{x}$, \textit{is} known.  Can we recover the function $f(x)$ from $f(p)$?  \textbf{NO!}  This is clearly illustrated by the figure below:
 
+%Insert L-T graph proof
 
+As an analytical example, let's take a look at a couple of functions and see if we can perform this recovery:
+
+$$f(x)=x^{2}, p=\dif{f}{x}=2x \rightarrow f(p)=(\frac{p}{2})^{2}$$
+$$f(x)=(x-a)^{2}, p=\dif{f}{x}-2(x-a) \rightarrow f(p)=(\frac{p}{2})^{2}$$
+
+From two different starting functions we extracted two different values of p, however, $f(p)$ in both cases is the same.  Clearly we cannot recover a unique initial function from the information contained solely in $f(p)$.  
+
+Now, for single variable functions this constant shift is not a big deal.  But for functions of several variables we end up seeing shifts and alterations that are functions of other variables, which greatly complicates the situation.  
+
+Even though we cannot recover the initial function from the $f(p)$ values shown above, is it possible to construct some $f(p)$ where it \textit{is} possible to reconstruct the initial function?  It turns out the answer is yes!  A function of $p=\dif{f}{x}$ containing all of the information needed to reconstruct $f(x)$ is the intercept of the tangent with the vertical axis:
+
+%Insert L-T Intercept diagrams
+
+$\rightarrow p=\frac{f-\tilde{f}}{x}\rightarrow\tilde{f}(p)=px-f(x)\vert_{x such that \frac{f}{x}=p }$
+
+Returning to thermodynamics, we see from its definition that $-F(T,V,N)$ is the Legendre Transform of $E(S,V,N)$ in relation to the variable $S$.  Indeed, the Legendre Transform of $E$ is: 
+
+$$E(S,V,N)\rightarrow\tilde{E}(T,V,N)=TS-E(S,V,N)\vert_{S=S* such that \pardif{E}{S}=T}$$
+$$T=\pardif{E}{S}$$
+
+From the definition of the Helmholtz Free Energy:
+
+$$F(T,V,N)=E-TS\vert_{E=E*, such that 0=\frac{\delta}{\delta E}(E-TS)=1-T\pardif{S}{E}\vert_{E=E*}}$$
+
+But the value $S*$ for which $\thermdif{E}{S}{S*}{ }=T$ corresponds to $E^{*}=E(S^{*},V,N)$, so
+
+$$F(T,V,N)=-\tilde{E}(E,V,N)$$
+
+Notice that:
+
+$$\thermdif{F}{T}{V}{N}=\frac{\delta}{\delta t}[(E(S,V,N)-TS)\vert_{S such that \thermdif{E}{S}{S*}{ }=T}]\vert_{V,N}$$
+
+ 
      
 
 \end{document}
