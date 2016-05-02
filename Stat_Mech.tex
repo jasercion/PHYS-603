@@ -18,7 +18,9 @@
   \sectionfont Lecture \thesection.}\medbreak}
 \makeatother
 \newcommand{\pardif}[2]{\frac{\delta#1}{\delta#2}}
+\newcommand{\secpardif}[2]{\frac{\delta^{2}#1}{\delta#2^{2}}}
 \newcommand{\thermdif}[4]{\frac{\delta#1}{\delta#2}\vert_{#3,#4}}
+\newcommand{\secthermdif}[4]{\frac{\delta^{2}#1}{\delta#2^{2}}\vert_{#3,#4}}
 \newcommand{\dif}[2]{\frac{d#1}{d#2}}
 \newcommand{\bltz}{k_{B}}
 \newcommand{\sumser}[2]{\sum\limits_{#1}^{#2}}
@@ -416,9 +418,149 @@ Let's consider first the case of two subsystems separated by a diathermal wall. 
 
 %insert final state of equilibrium diagram
 
-$$\dif{S}{E_{1}^{'}}
+$$\dif{S}{E_{1}^{'}}=0\rightarrow\pardif{S_{1}}{E_{1}}=\pardif{S_{2}}{E_{2}}$$
+$$\frac{d^{2}S}{dE_{1}^{2}}<0\rightarrow\frac{\delta^{2}S_{1}}{\delta E_{1}^{2}}+\frac{\delta^{2}S_{2}}{\delta E_{2}^{2}}<0$$
+
+The quantity $\frac{\delta^{2}S}{\delta E^{2}}$ has a physical interpretation:
+
+$$\secthermdif{S}{E}{V}{N}=\thermdif{\frac{1}{T}}{E}{V}{N}=-\frac{1}{T^{2}}\thermdif{T}{E}{V}{N}$$
+
+$$=-\frac{1}{T^{2}}\frac{1}{\thermdif{E}{T}{V}{N}}=-\frac{1}{T^{2}N}\frac{1}{c_{v}}$$
+
+Where $c_{v}$ is the system's specific heat at a constant volume.  From the above we see that the stability condition is then:
+
+$$-\frac{1}{N_{1}T^{2}}\frac{1}{c_{v}^{1}}-\frac{1}{N_{2}T^{2}}\frac{1}{c_{v}^{2}}<0$$
+or
+$$\frac{1}{N_{1}c_{v}^{1}}+\frac{1}{N_{2}c_{v}^{2}}>0$$
+
+This is true because $T_{1}=T_{2}$ in equilibrium.  By taking one subsystem to be much larger we conclude that each one of $c_{v}^{1}$ and $c_{v}^{2}$ should be positive.  This result is physically obvious.  Suppose $c_{v}^{1}<0$.  In this case, the system would get \textit{colder} by absorbing heat.  This would, of course, cause the system to absorb even more heat in a runaway cycle.  Clearly, this is an unstable situation.  
+
+Next, let's consider the case where both E and V are exchanged between the subsystems.  We have:
+
+$$0=\pardif{S}{E_{1}^{1}}=\pardif{S_{1}}{E_{1}}-\pardif{S_{2}}{E_{2}}$$
+$$0=\pardif{S}{V_{1}^{1}}=\pardif{S_{1}}{V_{1}}-\pardif{S_{2}}{V_{2}}$$
+
+$$0>d^{2}S=(dE_{1}^{1}dV_{1}^{1}) \left[ \begin{smallmatrix} \secpardif{S_{1}}{(E_{1}^{1})}&\frac{\delta^{2}S_{1}}{\delta E_{1}^{1}\delta V_{1}^{1}}\\ \frac{\delta^{2}S_{1}}{\delta E_{1}^{1}\delta V_{1}^{1}}&\secpardif{S_{1}}{(V_{1}^{1})} \end{smallmatrix} \right] 
+\begin{bmatrix}
+	dE_{1}^{1} \\
+	dV_{1}^{1} 
+\end{bmatrix}
++1\leftrightarrow2$$
+
+We need that last term, 2, to be negative for any $dE_{1}^{1},dV_{1}^{1}$.  For the second variation $d^{2}S$ to be negative for any $E_{1}^{1},V_{1}^{1}$ it's necessary that the eigenvalues of 
+
+$$\left[ \begin{smallmatrix} \secpardif{S_{1}}{(E_{1}^{2})}&\frac{\delta^{2}S_{1}}{\delta E_{1}^{1}\delta V_{1}^{1}}\\ \frac{\delta^{2}S_{1}}{\delta E_{1}^{1}\delta V_{1}^{1}}&\secpardif{S_{1}}{(V_{1}^{1})} \end{smallmatrix} \right]$$
+
+to be negative.  So let's work out a general condition for this to be true.
+
+$$\left| \begin{smallmatrix} a-\lambda&b\\ b&c-\lambda \end{smallmatrix} \right|=0$$
+
+where
+
+$$\lambda^{2}-(a+c)\lambda+ac-b^{2}=0$$
+$$\lambda=\frac{a+c}{2}\pm\sqrt{\frac{a+c}{2}^{2}-(ac-b^{2})}<0$$
+$$a+c<0 \& ac-b^{2}>0$$
+$$a<0 \& c-\frac{b^{2}}{a}<0$$
+
+In this case, $a=\secthermdif{S}{E}{V}{N}=\thermdif{\frac{1}{T}}{E}{V}{N}=-\frac{1}{T^{2}}\thermdif{T}{E}{V}{N}=-\frac{1}{T^{2}N}\frac{1}{c_{v}}<0$.  Note that the last part of the expression is the same condition as before, namely that $c_{v}>0$.
+
+$$0>c-\frac{b^{2}}{a}=\secthermdif{S}{V}{E}{N}-(\frac{\delta^{2}S}{\delta E\delta V})^{2}\frac{1}{\secthermdif{S}{E}{V}{N}}$$
+
+%Insert Diagram
+
+Although this last expression is rather messy, we can rewrite in a more clear way with a transparent physical meaning.
+
+$$\thermdif{\frac{P}{T}}{V}{T}{ }=\nabla(\frac{P}{T})*\mathbb{n}$$
+$$\thermdif{\frac{P}{T}}{V}{T}{ }=\thermdif{\frac{P}{T}}{V}{E}{ }-\thermdif{T}{V}{E}{ }\frac{1}{\thermdif{T}{E}{V}{ }}\thermdif{\frac{P}{T}}{E}{V}{ }$$
+$$\thermdif{\frac{P}{T}}{V}{T}{ }=\secpardif{S}{V}+T^{2}\frac{\delta^{2}S}{\delta E\delta V}\vert_{E}\frac{1}{-T^{2}\secthermdif{S}{E}{V}{ }}\frac{\delta^{2}S}{\delta V\delta E}$$  
+
+So we find $\thermdif{\frac{P}{T}}{V}{T}{ }=\frac{1}{T}\thermdif{P}{V}{T}{ }<0$.  The $\frac{1}{T}\thermdif{P}{V}{T}{ }<0$ term can be rewritten to yield:
+
+$$-\frac{1}{VT}[-\frac{1}{V}\thermdif{V}{P}{T}{ }]^{-1}=-\frac{1}{VT}\frac{1}{R_{T}}$$
+	
+We have defined a new quantity above, $R_{T}$.  The quantity is the \textbf{Isothermal Compressibility} of the gas.  The stability condition we defined earlier implies that the isothermal compressiblity is positive, however, this result is not immediately obvious.  A negative compressibility would mean that the system expands as the pressure increases.  This behaviour would increase the pressure of the other system leading to a runaway expansion of our observed system.
+
+\chapter{Canonical Ensemble}
+
+%Insert Canonical ensemble resevoir diagram
+
+For many situations, it is much easier to treat a system as if it is in contact with an infinite heat reservoir.  This important property of this reservoir is that it is unaffected by any energy it absorbs due to its size.  In order to derive an ensemble to describe this system, let's start with the microcanonical ensemble:
+
+$$\rho(q,p)~\Gamma(E-\mathcal{H}(q,p))$$
+
+Where $q,p$ are the coordinates of the subsystem only, $\Gamma$ is the function which represents the number of microstates of the reservoir with energy $E-\mathcal{H}(q,p)$.  The terms within the gamma function represent the total energy of the reservoir (E) and the subsystem energy ($\mathcal{H}$).  Continuing our derivation:
+
+$$\rho(q,p)~e^{\frac{1}{\bltz}*S_{R}(E-\mathcal{H}(q,p))}$$
+Where $S_{R}$ is the reservoir's entropy.
+$$\rho(q,p)\cong e^{\frac{1}{\bltz}S_{R}(E)-\frac{1}{\bltz}\mathcal{H}(q,p)\pardif{S_{R}}{E}}$$
+In the expression above, we see that $\frac{1}{\bltz}S_{R}(E)$ is a constant independent of the coordinants $(q,p)$, and the $\pardif{S_{R}}{E}\rightarrow\frac{1}{T_{R}}=\frac{1}{T}$ term shows the equilibrium equivalence of the reservoir temperature ($T_{R}$) and the subsystem temperature ($T$).  Thus:
+
+$$\rho(q,p)~e^{-\frac{\mathcal{H}(q,p)}{\bltz T}}$$
+
+Therefore, we see that $\rho(q,p)$ is independent of the reservoir's properties.  This expression illustrates what is known as the \textbf{Canonical Ensemble}.
+
+$$\rho(q,p)=\frac{e^{-\beta\mathcal{H}(q,p)}}{Z}$$
+$$Z=\int dqdpe^{-\beta\mathcal{H}(q,p)}$$
+$$\beta=\frac{1}{\bltz T}$$
+
+\section{Equivalence with the Microcanonical Ensemble}
+
+To see the equivalence of these two ensembles, let's start with the partition function:
+
+$$Z=\int dqdpe^{-\beta\mathcal{H}(q,p)}=\int dE\Gamma(E)e^{-\beta E}$$
+
+Where $dE\Gamma(E)$ is the number of microstates with energy between $E$ and $E+dE$.  Therefore
+
+$$Z=\int dE e^{\frac{S(E)}{\bltz}-\beta E}$$
+
+As we see in the above expression, $S(E)$ is the microcanonical ensemble and the entire exponent of $e$ is an extensive quantity which is $~N$ \textit{very} concentrated around the maximum of the integrand.
+
+%Insert integral diagram
+
+$$Z\cong\Delta e^{-\beta(E-TS(E))}\vert_{E=E*}$$
+
+The energy constraint insists that the energy minimizes the value $E-TS(E)$.  This value has a particular significance and therefore has a specific name...
+
+\section{Helmholtz Free Energy and the Partition Function}
+
+As stated before, the quantity $E-TS(E,V,N)\vert_{E=E*}$ has a specific name: \textbf{Helmholtz Free Energy}, and is denoted by the function $F(T,V,N)$.  Before we further discuss the importance of this quantity, let's first explore the significance of the normalization factor Z in the Canonical Ensemble.  Z also has a specific name, the \textbf{Partition Function}.  It is extremely useful in its own right:
+
+$$\pardif{\ln{Z}}{\beta}=\frac{1}{T}\pardif{Z}{\beta}=\frac{1}{Z}\int dqdp(-\mathcal{H})e^{-\beta\mathcal{H}(q,p)}=<-E>$$
+
+Where $<-E>$ is the average of the energy ion the canonical ensemble.
+
+$$\secpardif{\ln{Z}}{\beta}=\frac{\delta}{\delta\beta}\frac{1}{Z}\pardif{Z}{\beta}=-\frac{1}{Z^{2}}(\pardif{Z}{\beta})^{2}+\frac{1}{Z}\secpardif{Z}{\beta}$$
+
+$$\secpardif{\ln{Z}}{\beta}=-<E>^{2}+\frac{1}{Z}\int dqdp\mathcal{H}^{2}(q,p)e^{-\beta\mathcal{H}(q,p)}$$
+
+$$\secpardif{\ln{Z}}{\beta}=-<E>^{2}+<E^{2}>$$
+
+$$\secpardif{\ln{Z}}{\beta}=<(E-<E>)^{2}>$$
+
+However, keep in mind that 
+
+$$\frac{\sqrt{<(E-<E>)^{2}}}{<E>}~\frac{\sqrt{N}}{N}~\frac{1}{\sqrt{N}}\rightarrow_{N>>1}0$$
+
+Where $\sqrt{<(E-<E>)^{2}}$ is the fluctuation in energy and the $<E>$ is the average energy.
+
+This shows that in the thermodynamic limit ($N\rightarrow\infty$) the energy does not fluctuate and only the microstates with an energy equal to the average value contributes significantly when computing averages using the canonical ensemble.  In other words, the canonical ensemble is equivalent to the microcanonical ensemble.
+
+%Insert E/\rho diagram 
+
+There are two specific situations where the canonical ensemble is used:
+
+\begin{itemize}
+	\item The system is coupled to a heat reservoir
+	\item The system is isolated but it is easier to compute averages in the canonical ensemble.  This ends up being a very common situation
+\end{itemize}
+
+Previously we have argued that the averages of observables computed in the canonical ensemble are the same (in the Thermodynamic Limit) as the microcanonical ensemble.  Now, we would like to demonstrate that the information contained in $S(E,V,N)$ (or, equivalently, E(S,V,N)) is also contained in the Helmholtz Free Energy, $F(T,V,N)$(notice the arguments T,V,N; \textbf{NOT} S,V,N!).  To do this, we'll have to utilize a mathematical algorithm known as the Legendre Transform.
+
+\subsection{Legendre Transforms}
+
+Suppose $f(x)$ is not known but $f(p)$, where $p=\dif{f}{x}$, \textit{is} known.  Can we recover the function $f(x)$ from $f(p)$?  \textbf{NO!}  This is clearly illustrated by the figure below:
 
 
-
+     
 
 \end{document}
