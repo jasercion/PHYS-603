@@ -6,7 +6,6 @@
 \usepackage{wrapfig}
 \usepackage{tabu}
 \usepackage{hyperref}
-\usepackage{cleverref}
 \graphicspath {{Images/}}
 
 \makeatletter
@@ -641,7 +640,135 @@ Which is the same value that we calculated before using the microcanonical ensem
 
 %Insert magnet model diagram
 
-$$\mathcal{H}(\theta_{i},L_{i})=\sumser{i=1}{N}\frac{L_{i}^{2}}{2I}-H\mu\cos{\theta_{i}}
-$$Z=\int\prod_{i=1}^{N}d\theta_{i}dL_{i}e^{-\beta\sumser{i=1}{N}[\frac{L_{i}^{2}}{2I}-H\mu\cos{\theta_{i}}]}$$
+$$\mathcal{H}(\theta_{i},L_{i})=\sumser{i=1}{N}\frac{L_{i}^{2}}{2I}-H\mu\cos{\theta_{i}}$$
 
+$$Z=\int\prod_{i=1}^{N}d\theta_{i}dL_{i}e^{-\beta\sumser{i=1}{N}[\frac{L_{i}^{2}}{2I}-H\mu\cos{\theta_{i}}]}$$
+$$=[\int_{0}^{2\pi}d\theta e^{\beta H\mu\cos{\theta}}]^{N}[\int_{-\infty}^{\infty}dLe^{-\frac{\beta L^{2}}{2I}}]^{N}$$
+
+Here we see that $[\int_{0}^{2\pi}d\theta e^{\beta H\mu\cos{\theta}}]^{N}$ is simply the $I_{0}$ Bessel Function, specifically $I_{0}(\beta H\mu)$.  The second term, $[\int_{-\infty}^{\infty}dLe^{-\frac{\beta L^{2}}{2I}}]^{N}$, is approximately the value of $\sqrt{T}$.  Therefore,
+
+$$Z~[I_{0}(\beta H\mu)\sqrt{T}]^{N}$$
+
+Thus we can easily express the Helmholtz Free Energy of the system as 
+
+$$F=-\bltz T\ln{Z}=-\bltz T\ln{\sqrt{T}I_{0}(\beta H\mu)}$$
+
+Now, let's derive the value of an observable.  For example, the average magnetic moment per site in our system: $<M>$
+
+$$\frac{1}{N}<M>=<\frac{1}{N}\sumser{i=1}{N}\mu\cos{\theta_{i}}>=\frac{1}{Z}\int d\theta_{i}dL_{i}\frac{\mu}{N}\sum\cos{\theta_{i}}e^{-\beta\mathcal{H}}$$
+$$=\frac{1}{\beta N}\frac{\delta}{\delta H}\ln{Z}=-\pardif{F}{H}$$
+$$=\frac{I_{1}(\frac{H\mu}{\bltz T})}{I_{0}(\frac{H\mu}{\bltz T})}$$
+
+The above expression yields two different values based on the limit of $H\mu$.  
+
+$$H\mu<<\bltz T\rightarrow \frac{H\mu T}{2}$$
+$$H\mu>>\bltz T\rightarrow sign(H)$$
+
+%Insert <M> graph diagram
+
+\subsubsection{EXAMPLE: Classical Harmonic Oscillators and the Equipartition Theorem}
+
+Systems of linked harmonic oscillators are extremely important in modelling many physical phenomena.  Let's examine such a system using the equipartition theorem:
+
+In this case, the Hamiltonian that describes the system is: $\mathcal{q_{i},p_{i}}=\sumser{i=1}{N}[\frac{p_{i}^{2}}{2m}+\frac{m\omega^{2}}{2}q_{i}^{2}]$
+
+Therefore, we can use this to write the system's partition function:
+
+$$Z=\int\prod_{i=1}^{N}dq_{i}dp_{i}e^{-\beta\sumser{i=1}{N}[\frac{p_{i}^{2}}{2m}+\frac{m\omega^{2}}{2}q_{i}^{2}]}$$
+$$=[\int_{-\infty}^{\infty}dqe^{-\frac{\beta m\omega^{2}}{2}q^{2}}]^{N}[\int_{-\infty}^{\infty}dpe^{-\frac{\beta p^{2}}{2m}}]^{N}$$
+
+The first term is approximately $\frac{1}{\sqrt{m\omega^{2}\bltz T}}$ and the second term is approximately $\sqrt{2m\bltz T}$.
+
+Many of these variables cancel or reduce, leaving us with
+
+$$Z~(\frac{\bltz T}{\omega})^{N}=(\beta\omega)^{-N}$$
+
+Solving for the average energy yields:
+
+$$<E>=-\frac{1}{Z}\pardif{Z}{\beta}=-\pardif{\ln{Z}}{\beta}=\frac{N}{\beta}=N\bltz T$$
+
+This result is important, as it shows in our classical model that the average energy of any one harmonic oscillator at temperature T is $\bltz T$, entirely independent of $\omega$.  Oscillators with a large $\omega$ (stiff spring constant) will oscillate less, the oscillators with a small $\omega$ (loose spring constant) will oscillate more, but all will have the same average energy:
+
+%Insert oscillator energy graphs.
+
+If we had worked this example for free particles in one dimension instead of oscillators we would have found that $<E>=\frac{1}{2}\bltz T$ (see appendix).  The fact that many physical systems can be written in terms of coupled harmonic oscillators (normal modes) implies the \textbf{Equipartition Theorem}.  This theorem is extremely powerful and is very useful in solving classical systems, so it is stated separately below:
+
+\textbf{Equipartition Theorem}: Each quadratic term in the Hamiltonian contributes $\frac{\bltz T}{2}$ to the system's average energy ($<E>$).
+
+\subsubsection{EXAMPLE: Classical, Non-relativistic, Diatomic Gas}
+
+Assuming the vibrational mode can be treated as classical, we have:
+
+$$\mathcal{H}=\sumser{i=1}{N}\frac{\mathbb{p_{i}^{2}}}{2m}+\frac{p_{i}^{2}}{2m}+\frac{m\omega^{2}}{2}x_{i}^{2}$$
+
+Disecting this hamiltonian, we see that the first term is a momentum vector.  This represents the center of mass momentum, so it contributes 3 quatratic terms per molecule.  The second and third terms together represent the molecule's vibrational energy, where $x_{i}$ is the distance between the atoms in the molecule.  The vibrational energy contributes 2 quadractic terms per molecule.  Since we know this information, it is now trivial to construct an expression for the average energy using the Equipartition Theorem:
+
+$$\frac{1}{N}<E>=(3+2)\frac{1}{2}\bltz T=\frac{5}{2}\bltz T$$
+
+\section{Quantum Statistical Mechanics}
+
+So far we have been assuming that the systems we have been working with behaved Classically at the microscopic level.  Now let's rework our previous formalism to describe systems which exist within the realm of Quantum Mechanics.  There are two ways to accomplish this:  We can trust analogies and guess the form of most expressions or we can generalize the concept of the ensemble for quantum systems.  The second option is much more powerful, however, the first is quicker and will be enough for the majority of the systems we will be dealing with.
+
+\begin{tabu} to 0.8\textwidth { | X[r] | X[c] | X[c] | }
+	\hline
+	 & Classical & Quantum \\
+	\hline
+	Observables: & Function in Phase Space $\rightarrow f(q,p)$ & Operator in Hilbert Space $\rightarrow\hat{f}$ \\
+	\hline
+	Averages in the Canonical Ensemble: & $\frac{1}{Z}\int dqdpe^{-\beta H}f(q,p), Z=\int dqdpe^{-\beta H}$ & $\frac{1}{Z}Tr[e^{-\beta\hat{H}}\hat{f}], Z=Tr[e^{-\beta\hat{H}}]$\\
+	\hline
+	Partition Function: & $Z=\int dE\Gamma(E)e^{-\beta E}$ & $Z=\sum_{n}<n|e^{-\beta\hat{H}}|n>=\sum_{n}e^{-\beta E_{n}}\cong\int dE\Gamma(E)e^{-\beta E}$\\
+	\hline
+\end{tabu}  
+
+A couple of notes regarding the quantum partition function: $n$ is are the eigenstates of $\hat{H}$ and $E_{n}$ are the eigenvalues.  $dE\Gamma(E)$ is the number of quantum states between E and E+dE.  The integral over these states approximates the partition function only for very dense spectra.  
+
+\subsection{The Density Matrix}
+
+Although this concept won't actually be used in this course, it is a basic thing that any good physicist worth their salt should know.  Suppose we know the quantum state of a system at a given time, for example
+
+$$|\Psi>$$
+
+We can compute the expectation value of an observable (represented by operator $\hat{A}$ in this case) by
+
+$$<A>=<\Psi|\hat{A}|\Psi>$$
+
+Where $<A>$ is the average over results obtained by many identically prepared systems.  An interesting observation of this statement is that we can get different results from identical measurements on identically prepared systems.  This uncertainty is due to the nature of Quantum Mechanics.  In particular, if a system is prepared in the state $|\Psi>=\alpha|\Psi_{1}>+\beta|\Psi_{2}>$, $<A>$ is given by:
+
+$$<A>=<\Psi|\hat{A}|\Psi>=|\alpha|^{2}<\Psi_{1}|\hat{A}|\Psi_{1}>+|\beta|^{2}<\Psi_{2}|\hat{A}|\Psi_{2}>+\alpha^{*}\beta<\Psi_{1}|\hat{A}|\Psi_{2}>+\alpha\beta^{*}<\Psi_{2}|\hat{A}|\Psi_{1}>$$
+
+$\alpha^{*}\beta<\Psi_{1}|\hat{A}|\Psi_{2}>+\alpha\beta^{*}<\Psi_{2}|\hat{A}|\Psi_{1}>$ are the interference terms, so they may have either sign.  Now, suppose that eh state $|\Psi>$ is not known for sure, not because of any uncertainty imposed by quantum mechanics but just because of practical considerations.  Let us state that there is a probability $p_{1}$ that the system is in state $|\Psi_{1}>$ and probability $p_{2}$ that it is in state $|\Psi_{2}>$.  The actual wavefunction is either $|\Psi_{1}>$ or $|\Psi_{2}>$.  Therefore, we expect that the expectation value of observable $A$ is:
+
+$$<A>=p_{1}<\Psi_{1}|\hat{A}|\Psi_{1}>+p_{2}<\Psi_{2}|\hat{A}|\Psi_{2}>=Tr[(p_{1}|\Psi_{1}><\Psi_{1}|+p_{2}|\Psi_{2}><\Psi_{2}|)\hat{A}]=Tr[\hat{\rho}\hat{A}]$$
+
+The operator $\hat{\rho}$ is called the \textbf{Density Matrix} and it is the quantum analogue of the phase space distribution $\rho(q_{i},p_{i})$.  Of course, this definition generalizes to the case where the classical uncertainty extends to several states:
+
+$$\hat{\rho}=\sum_{n}p_{n}|n><n|$$
+
+From this definition a few properties directly follow:
+
+\begin{itemize}
+	\item $Tr\hat{\rho}$ (since $\sum_{n}p_{n}=1$)
+	\item $\hat{\rho}^{\dagger}=\hat{\rho}$ ($\rho$ is hermitian, since the analogue of $\rho(q_{i},p_{i})$ must be real)
+\end{itemize}
+
+If $\hat{\rho}=|\Psi><\Psi|$, that is, if we know the quantum state of a system with 100\% confidence, we say that the system is in a \textit{pure} state.  Otherwise we say the system is in a \textit{mixed} state.  For a pure state $\hat{\rho}^{2}=|\Psi><\Psi|\Psi><\Psi|=|\Psi><\Psi|=\hat{\rho}$, so $\hat{\rho}^{2}=\hat{\rho} \leftrightarrow \hat{\rho}$ is a pure state.
+
+Notice the difference between $|\Psi>=\frac{1}{\sqrt{2}}|\Psi_{1}>+\frac{1}{\sqrt{2}}|\Psi_{2}>$ and $\hat{\rho}=\frac{1}{2}|\Psi_{1}><\Psi_{1}|+\frac{1}{2}|\Psi_{2}><\Psi_{2}|$.  Both could be described as a 50-50 combination of $|\Psi_{1}>$ and $|\Psi_{2}>$ but they represent completely different physical situations.  
+
+\subsection{EXAMPLE: Quantum Harmonic Oscillator}
+
+We begin, as always, with the Hamiltonian.
+
+$$H=\frac{\hat{p}^{2}}{2m}+\frac{m\omega^{2}}{2}\hat{x}^{2}\rightarrow E_{n}=(n+\frac{1}{2})\hbar\omega,|n>, n=0,1,...$$
+
+$$Z=\sum_{n_{1}=0}^{\infty}\sum_{n_{2}=0}^{\infty}\sum_{n_{3}=0}^{\infty}....\sum_{n_{N}=0}^{\infty}e^{\beta\hbar\omega[(n_{1}+\frac{1}{2})+(n_{2}+\frac{1}{2})+....+(n_{N}+\frac{1}{2})]}$$
+$$Z=[\sum_{n=0}^{\infty}e^{-\beta\hbar\omega(n+\frac{1}{2})}]^{N}$$
+$$Z=[e^{-\frac{\beta\hbar\omega}{2}}\frac{1}{1-e^{-\beta\hbar\omega}}]^{N}$$
+$$Z=[\frac{1}{e^{\frac{\beta\hbar\omega}{2}}-e^{-\frac{\beta\hbar\omega}{2}}}}]^{N}$$
+$$Z=[\frac{1}{2\sinh{\frac{\beta\hbar\omega}{2}}}]^{N}$$
+
+$$\frac{1}{N}<E>=-\frac{1}{ZN}\pardif{Z}{\beta}=-\frac{1}{N}\pardif{\ln{Z}}{\beta}=\frac{1}{N}\pardif{N\ln{2\sinh\beta\hbar\omega}}{2}$$
+$$=\frac{\cosh{}}{den}
+	
 \end{document}
