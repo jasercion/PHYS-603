@@ -5,6 +5,8 @@
 \usepackage{graphicx}
 \usepackage{wrapfig}
 \usepackage{tabu}
+\usepackage{hyperref}
+\usepackage{cleverref}
 \graphicspath {{Images/}}
 
 \makeatletter
@@ -594,8 +596,52 @@ $$F(T,V,N)=-\tilde{E}(E,V,N)$$
 Notice that:
 
 $$\thermdif{F}{T}{V}{N}=\frac{\delta}{\delta t}[(E(S,V,N)-TS)\vert_{S such that \thermdif{E}{S}{S*}{ }=T}]\vert_{V,N}$$
+$$\thermdif{F}{T}{V}{N}=\thermdif{E}{S}{V}{N}\thermdif{S*}{T}{V}{N}-S^{*}-T\thermdif{S^{*}}{T}{V}{N}$$
 
+(Remember that $\thermdif{E}{S}{V}{N}=T$!)
+
+$$\thermdif{F}{T}{V}{N}=-S^{*}$$
+
+For expedience, from now on we will be dropping the * superscript.
+
+$$\thermdif{F}{V}{T}{N}=\frac{\delta}{\delta V}[(E(S,V,N)-TS)\vert_{S such that \thermdif{E}{S}{S^{*}}{ }}]\vert_{T,N}$$
+$$=\thermdif{E}{V}{S}{N}+\thermdif{E}{S}{V}{N}\pardif{S^{*}}{V}-T\pardif{S^{*}}{V}=\thermdif{E}{V}{S}{N}=-P$$
+$$\thermdif{F}{N}{T}{V}=\thermdif{E}{N}{S}{V}+\thermdif{E}{S}{V}{N}\pardif{S^{*}}{N}-T\pardif{S^{*}}{N}=\thermdif{E}{N}{V}{N}=\mu$$
+
+Thus, $dF=-SdT-PdV+\mu dN$  Also, as a consequence of Euler's relations, $E=TS-PV+\mu N\rightarrow F=-PV+\mu N$
+
+\subsubsection{EXAMPLE: Classical, Ideal, Non-Relativistic, Monoatomic Gas}
+
+$$\mathcal{H}(\mathbb{r}_{i},\mathbb{p}_{i})=\sumser{i=1}{N}\frac{\mathbb{p}_{i}^{2}}{2m}$$
+$$Z=\int\prod_{i=1}^{N}\frac{d^{3}\mathbb{r}_{i}d^{3}\mathbb{p}_{i}}{N!}e^{-\beta\sum_{i=1}^{N}\frac{\mathbb{p}_{i}^{2}}{2m}}$$
+$$=[\int d^{3}\mathbb{r}\int d^{3}\mathbb{p}e^{-\beta\frac{\mathbb{p}^{2}}{2m}}]^{3}\frac{1}{N!}$$
+
+(Remember that $\int d^{3}\mathbb{r}$ is simply $V$)
  
-     
+$$=V^{N}\left[\int_{-\infty}^{\infty}dpe^{-\frac{p^{2}}{2m\bltz T}}\right]^{3N}\frac{1}{N!}$$
+
+$$=V^{N}(\frac{2m\bltz T}{\pi})^{\frac{3N}{2}}\frac{1}{N!}$$
+
+Therefore, in the $N>>1$ limit,
+
+$$F\cong-\bltz T\ln{Z}=-N\bltz T[\ln(V(\frac{2m\bltz T}{\pi})^{\frac{3}{2}})-\ln{N}]$$
+
+$$F\cong-N\bltz T\ln{\frac{V}{N}(\frac{2m\bltz T}{\pi})^{\frac{3}{2}}}$$
+
+This shows that $F$ is extensive, which it should be.  Now, we take the Legendre Transform of the Helmholtz Free Energy to find $E(S,V,N)$ from $F(T,V,N)$:     
+
+$$\pardif{F}{T}=-S=-N\bltz\ln{\frac{V}{N}(\frac{2m\bltz T}{\pi})^{\frac{3}{2}}}\frac{-3N\bltz}{2}$$
+$$\rightarrow\bltz T=\frac{\pi}{2m}\frac{N^{\frac{2}{3}}}{V^{\frac{2}{3}}}e^{\frac{2}{3}\frac{S}{N\bltz}-1}$$
+$$E=F+TS=-N\bltz T\ln{\frac{V}{N}(\frac{2m\bltz T}{\pi})^{\frac{3}{2}}}+\frac{\pi}{2m}(\frac{N}{V})^{\frac{2}{3}}e^{\frac{2S}{3N\bltz}-1}S$$
+$$E=\frac{3}{2}\frac{\pi}{2m}\frac{N^{\frac{5}{3}}}{V^{\frac{2}{3}}}e^{\frac{2S}{3N\bltz}-1}$$
+
+Which is the same value that we calculated before using the microcanonical ensemble.
+
+\subsubsection{EXAMPLE: Classical model of a Paramagnet}
+
+%Insert magnet model diagram
+
+$$\mathcal{H}(\theta_{i},L_{i})=\sumser{i=1}{N}\frac{L_{i}^{2}}{2I}-H\mu\cos{\theta_{i}}
+$$Z=\int\prod_{i=1}^{N}d\theta_{i}dL_{i}e^{-\beta\sumser{i=1}{N}[\frac{L_{i}^{2}}{2I}-H\mu\cos{\theta_{i}}]}$$
 
 \end{document}
