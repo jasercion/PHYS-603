@@ -26,6 +26,7 @@
 \newcommand{\dif}[2]{\frac{d#1}{d#2}}
 \newcommand{\bltz}{k_{B}}
 \newcommand{\sumser}[2]{\sum\limits_{#1}^{#2}}
+\newcommand{cmd}{def}
 
 \title{Lectures on Statistical Mechanics and Thermodynamics}
 \author{Paolo Bedaque}
@@ -765,10 +766,57 @@ $$H=\frac{\hat{p}^{2}}{2m}+\frac{m\omega^{2}}{2}\hat{x}^{2}\rightarrow E_{n}=(n+
 $$Z=\sum_{n_{1}=0}^{\infty}\sum_{n_{2}=0}^{\infty}\sum_{n_{3}=0}^{\infty}....\sum_{n_{N}=0}^{\infty}e^{\beta\hbar\omega[(n_{1}+\frac{1}{2})+(n_{2}+\frac{1}{2})+....+(n_{N}+\frac{1}{2})]}$$
 $$Z=[\sum_{n=0}^{\infty}e^{-\beta\hbar\omega(n+\frac{1}{2})}]^{N}$$
 $$Z=[e^{-\frac{\beta\hbar\omega}{2}}\frac{1}{1-e^{-\beta\hbar\omega}}]^{N}$$
-$$Z=[\frac{1}{e^{\frac{\beta\hbar\omega}{2}}-e^{-\frac{\beta\hbar\omega}{2}}}}]^{N}$$
+$$Z=[\frac{1}{e^{\frac{\beta\hbar\omega}{2}}-e^{-\frac{\beta\hbar\omega}{2}}}]^{N}$$
 $$Z=[\frac{1}{2\sinh{\frac{\beta\hbar\omega}{2}}}]^{N}$$
 
-$$\frac{1}{N}<E>=-\frac{1}{ZN}\pardif{Z}{\beta}=-\frac{1}{N}\pardif{\ln{Z}}{\beta}=\frac{1}{N}\pardif{N\ln{2\sinh\beta\hbar\omega}}{2}$$
-$$=\frac{\cosh{}}{den}
-	
+$$\frac{1}{N}<E>=-\frac{1}{ZN}\pardif{Z}{\beta}=-\frac{1}{N}\pardif{\ln{Z}}{\beta}=\frac{1}{N}\pardif{N\ln{2\sinh{\frac{\beta\hbar\omega}{2}}}}{\beta}$$
+$$=\frac{\cosh{\frac{\beta\hbar\omega}{2}}}{\sinh{\frac{\beta\hbar\omega}{2}}}=\frac{\hbar\omega}{2}\coth{\frac{\beta\hbar\omega}{2}}$$
+
+Similar to the classical situation, this expression again yields two different solutions based on the limit of $\bltz T$.  
+
+$$\bltz T>>\hbar\omega \rightarrow \frac{\hbar\omega}{2}+\bltz T$$
+$$\bltz T<<\hbar\omega \rightarrow \frac{\hbar\omega}{2}+\hbar\omega e^{-\frac{\hbar\omega}{\bltz T}}$$
+
+Note that the first result is the classical result $\bltz T$ modified by the addition of zero-point energy ($\frac{\hbar\omega}{2}$).  The second result includes the same zero-point energy, but also includes "Boltzmann Supressed" thermal energy.  This arises because in the $\bltz T<<\hbar\omega$ limit the high frequency modes are "frozen".  This runs contrary to the classical equipartition theory.
+
+\subsection{EXAMPLE: Specific Heat of Molecular Gases}
+
+Molecules have vibrational and rotational degrees of freedom in addition to the standard translational ones.  For instance, for $H_{2}$:
+
+$$\mathcal{H}=\sumser{i=1}{N}\frac{\mathbb{P}_{i}^{2}}{2M}+\frac{\mathbb{P}_{i}^{2}}{2m_{red}}+m_{red}\frac{\omega^{2}}{2}x_{i}^{2}+\frac{\mathbb{L}_{i}^{2}}{2I}$$
+
+Breaking this down by terms, we have: $\frac{\mathbb{P}_{i}^{2}}{2M}$, which is the center of mass kinetic energy ($M=2m$); $\frac{\mathbb{P}_{i}^{2}}{2m_{red}}$, which is the vibrational kinetic energy ($\frac{1}{m_{red}}=\frac{1}{m}+\frac{1}{m}$); $m_{red}\frac{\omega^{2}}{2}x_{i}^{2}$, which is the vibrational potential energy ($x_{i}$ is the separation between atoms); and $\frac{\mathbb{L}_{i}^{2}}{2I}$ which is the rotational energy.
+
+Classically, we express the partition function thusly:
+
+$Z=\int\prod_{i=1}^{N}d^{3}\mathbb{R}_{i}d^{3}\mathbb{P}_{i}dp_{i}dx_{i}d^{2}\mathbb{L}_{i}e^{-\beta\mathcal{H}}$
+
+Note that there is no rotation around the molecule's axis.  This is because such rotation would result in a state that is indistinguishable from the initial state and therefore have no effect on our system.
+
+If all of these degrees of freedom are classical,
+
+%Where are the rest of the notes?
+
+\part{Quantum Gases}
+
+Previously, using the grand canonical ensemble we found the grand canonical potential of a quantum ideal gas of identical particles:
+
+$$\Omega(T,V,\mu)=\pm g\bltz TV\int\frac{d^{3}k}{(2\pi)^{3}}\ln(1\mp e^{-\beta(\frac{\hbar^{2}k^{2}}{2m}-\mu)})$$
+
+In this expression, we nicely sum up the main components of the canonical potential for both bosonic and fermionic gases.  To clarify, bosons behave according to the upper operators and fermions utilize the lower operators (i.e. for bosons there is a plus sign outside the log and a minus sign inside, and the converse is true for fermions).  We also rely on $g$, which is the degeneracy of single particle (orbital) states, $2s+1$ for particles of spin s.  Within the log, the value $\frac{\hbar^{2}k^{2}}{2m}$ is the energy $E_{k}$.  This is the energy of one particle with momentum of $\hbar k$.  
+
+Now, $N=-\pardif{\Omega}{\mu}$ since $-\pardif{\Omega}{\mu}=\frac{\delta}{\delta \mu}\frac{1}{\beta}\ln{Tr[e^{-\beta(\hat{H}-\mu\hat{N})}]}$
+
+$$=\frac{1}{\beta}\frac{Tr[\beta e^{-\beta(\hat{H}-\mu\hat{N})}\hat{N}]}{Tr[e^{-\beta(\hat{H}-\mu\hat{N})}]}=Tr[\hat{\rho}\hat{N}]=<N>$$
+ 
+Using this information we can find the particle density:
+
+$$\frac{N}{V}=-\pardif{\Omega}{\mu}=\mp\bltz Tg\int \frac{d^{3}k}{(2\pi^{3})}\frac{\mp\beta e^{-\beta(E_{k}-\mu)}}{1\mp e^{-\beta(E_{k}-\mu)}}$$
+
+$$=g\int\frac{d^{3}k}{(2\pi^{3})}\frac{1}{e^{\beta(E_{k}-\mu)}\mp1}$$
+
+Similarly,
+
+$$S=-\pardif{\Omega}{T}=\mp\bltz gV\int
+
 \end{document}
