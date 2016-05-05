@@ -26,7 +26,8 @@
 \newcommand{\dif}[2]{\frac{d#1}{d#2}}
 \newcommand{\bltz}{k_{B}}
 \newcommand{\sumser}[2]{\sum\limits_{#1}^{#2}}
-\newcommand{cmd}{def}
+\newcommand{\dtk}{\frac{d^{3}k}{2\pi^{3}}}	
+\newcommand{\ebk}{e^{-\beta\epsilon_{k}}}
 
 \title{Lectures on Statistical Mechanics and Thermodynamics}
 \author{Paolo Bedaque}
@@ -817,6 +818,16 @@ $$=g\int\frac{d^{3}k}{(2\pi^{3})}\frac{1}{e^{\beta(E_{k}-\mu)}\mp1}$$
 
 Similarly,
 
-$$S=-\pardif{\Omega}{T}=\mp\bltz gV\int
+$$S=-\pardif{\Omega}{T}=\mp\bltz gV\int\dtk\ln{1\mp\ebk}+\bltz gV\int\dtk\frac{\frac{1}{\bltz T^{2}}\ebk\epsilon_{k}}}{1\mp\ebk}$$
+
+Where we have defined a new variable $\epsilon_{k}=E_{k}-\mu$.  Continuing:
+
+$$=\mp\bltz gV\int\dtk[\ln{1\mp\ebk}\mp n(k)\ln{e^{\beta\epsilon_{k}}}]$$
+
+The terms we are integrating over are equivalent to $\frac{1}{1\pm n(k)}$ and $\frac{1\pm n(k)}{n(k)}$.  Therefore,
+
+$$=\mp gV\int\dtk[-\ln{1\pm n(k)}\mp n(k)\ln{1\pm n(k)}\pm n(k)\ln{n(k)}]$$
+$$=\bltz gV\int\dtk[(n(k)\pm 1)\ln{1\pm n(k)}-]
+
 
 \end{document}

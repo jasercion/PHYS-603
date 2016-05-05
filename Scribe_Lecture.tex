@@ -1,0 +1,42 @@
+documentclass{article}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{tabu}
+\usepackage{hyperref}
+\graphicspath {{Images/}}
+
+\makeatletter
+\def\lecture{\@ifnextchar[{\@lectureWith}{\@lectureWithout}}
+\def\@lectureWith[#1]{\medbreak\refstepcounter{section}%
+  \renewcommand{\leftmark}{Lecture \thesection}
+  \noindent{\addcontentsline{toc}{section}{Lecture \thesection: #1\@addpunct{.}}%
+  \sectionfont Lecture \thesection. #1\@addpunct{.}}\medbreak}
+\def\@lectureWithout{\medbreak\refstepcounter{section}%
+  \renewcommand{\leftmark}{Lecture \thesection}
+  \noindent{\addcontentsline{toc}{section}{Lecture \thesection.}%
+  \sectionfont Lecture \thesection.}\medbreak}
+\makeatother
+\newcommand{\pardif}[2]{\frac{\delta#1}{\delta#2}}
+\newcommand{\secpardif}[2]{\frac{\delta^{2}#1}{\delta#2^{2}}}
+\newcommand{\thermdif}[4]{\frac{\delta#1}{\delta#2}\vert_{#3,#4}}
+\newcommand{\secthermdif}[4]{\frac{\delta^{2}#1}{\delta#2^{2}}\vert_{#3,#4}}
+\newcommand{\dif}[2]{\frac{d#1}{d#2}}
+\newcommand{\bltz}{k_{B}}
+\newcommand{\sumser}[2]{\sum\limits_{#1}^{#2}}
+\newcommand{cmd}{def}
+
+\title{Second Order Phase Transitions}
+\author{Paolo Bedaque}
+\begin{document}
+\maketitle
+
+As expected from from our previous discussion of First Order Phase Transitions, \textbf{Second Order Phase Transitions} (or "Continous Transitions") are transiions where the first derivative of the free energy is now continuous and the second derivative is discontinuous.  The archetypal example of this system is our old friend: The Two-Dimensional Ising Model.
+
+\section{Phase Transitions of the 2-D Ising Model}
+
+In previous lectures we expanded the two dimensional Ising model in both low temperature and high temperature situations in order to determine the spin coorelation (<\sigma_{0}\sigma_{0+R}>).  At low temperatures we found that
+
+$$<\sigma_{0}\sigma_{0+R}>\approx1+....+<\sigma_{i}>
