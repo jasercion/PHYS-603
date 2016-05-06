@@ -827,7 +827,72 @@ $$=\mp\bltz gV\int\dtk[\ln{1\mp\ebk}\mp n(k)\ln{e^{\beta\epsilon_{k}}}]$$
 The terms we are integrating over are equivalent to $\frac{1}{1\pm n(k)}$ and $\frac{1\pm n(k)}{n(k)}$.  Therefore,
 
 $$=\mp gV\int\dtk[-\ln{1\pm n(k)}\mp n(k)\ln{1\pm n(k)}\pm n(k)\ln{n(k)}]$$
-$$=\bltz gV\int\dtk[(n(k)\pm 1)\ln{1\pm n(k)}-]
+$$=\bltz gV\int\dtk[(n(k)\pm 1)\ln{1\pm n(k)}-n(k)\ln{n(k)}]$$
+$$=\pm gV\int\dtk[(1\pm n(k))\ln{1\pm n(k)}\mp n(k)\ln{n(k)}]$$
 
+We know $\Omega=E-TS-\mu N$, and, by the Euler relation, $E=TS-PV+\mu N$, so $\Omega=-PV$.  That means that 
+
+$$E=\Omega+TS+\mu N=\pm V\int\dtk[\ln{1\mp\ebk}+(1+n(k))\ln{1\pm n(k)}\mp n(k)\ln{n(k)}\pm\frac{\mu}{\bltz T}n(k)]$$
+$$=\pm\bltz TV\int\dtk[\ln{\frac{1}{1\pm n(k)}}+(1\pm n(k))\ln(1\pm n(k))\mp n(k)\ln{n(k)}]$$
+
+Notice that the expression $(1\pm n(k))\ln(1\pm n(k))\mp n(k)\ln{n(k)}=\pm\ln{\frac{1\pm n(k)}{n(k)}}\pm\mu\beta n(k)$.
+
+Therefore,
+
+$$\pm n(k)\ln{e^{\beta\epsilon_{k}}\pm1\mp1}=\pm n(k)\beta\epsilon_{k}$$
+$$=\pm\bltz TV\int\dtk\pm n(k)\beta(\epsilon_{k}+\beta\mu)$$
+$$=V\int\dtk n(k)E_{k}$$
+
+As expected, the energy density is given by the sum over all momenta of the energy of each particle with that momentum multiplied by how many particle have that value of momentum.  
+
+\section{Classical Limit}
+
+Let's consider the regime where $e^{\beta\mu}<<1$ $(-\mu<<\bltz)$.  This implies
+
+$$n(k)=\frac{1}{e^{\beta(E_{k}-\mu)}\mp 1}\cong e^{\beta\mu}e^{-\beta E_{k}}<<1$$
+
+Which means our system has a low occupation number.  One thing to note is that $n(k)$ is simply $e^{\beta\mu}$ multiplied by the Maxwell-Boltzmann Distribution.  Continuing our analysis, let's calculate the expected particle density:
+
+$$\frac{N}{V}=g\int\dtk n(k)\cong gVe^{\beta\mu}\int_{0}^{\infty}dk\frac{4\pi k^{2}}{8\pi^{3}}e^{-\frac{\beta\hbar^{2}k^{2}}{2m}}$$
+
+Where $\int_{0}^{\infty}dk\frac{4\pi k^{2}}{8\pi^{3}}e^{-\frac{\beta\hbar^{2}k^{2}}{2m}}=\frac{1}{8\pi^{3}(\frac{2\pi m\bltz T}{\hbar^{2}})^{\frac{3}{2}}$.  To simplify further, we recall the the Thermal De Broglie Wavelength is $\lambda_{T}=\sqrt{\frac{\hbar^{2}}{2\pi m\bltz T}}$, meaning we can write our particle density expression in the following form:
+	
+$$\frac{N}{V}=ge^{\beta\mu}\frac{1}{\lambda_{T}^{3}}$$
+
+The Helmholtz Free Energy is given by:
+
+$$F=E-TS=\Omega+\mu N\cong\pm\bltz T gV\int\dtk\ln{1\mp\ebk}+\mu N$$
+
+Let's stop here for a moment and look at the above expression.  We know that $\ln{1\mp\ebk}\cong\mpe^{\beta\mu}e^{-\beta E_{k}}$ in the limit $-\mu>>T$  This means that in this limit we can approximate the first term, $\pm\bltz T gV\int\dtk\ln{1\mp\ebk}$, as $TN$.  In our classical case this is much less than the value of the second term $\mu N$.  
+
+Continuing our analysis, we find:
+
+$$F\cong N\ln{\frac{(2\pi)^{3}\lambda_{T}^{3}\mu}{gV}}\frac{1}{\beta}=N\mu$$
+
+We obtained this value by solving for N in our previous derivation of the particle density.  Therefore, we find:
+
+$$F\cong-\bltz TN[\ln{\frac{VT^{\frac{3}{2}}}{N}+Const.}]$$
+
+Which is the Classical Result for Helmholtz Free Energy.  Note that in the Classical calculation the $\ln{\frac{1}{N}}$ factor comes from the $\frac{1}{N!}$ "fudge factor" we used previously.
+
+In summary, we have derived that the conditions for classicality can be rephrased as:
+
+$$e^{\beta\mu}<<1\leftrightarrow\frac{N}{V}\lambda_{T}^{3}<<1\leftrightarrow(\frac{\lambda_{T}}{d})^{3}<<1$$
+
+Where $d$ is the interparticle distance.  All of these things are true for \textit{Dilute Gases}, so we come to the conclusion that \textbf{Dilute Gases are Classical.}
+
+The expressions for S,F,... are similar for bosons and fermions.  The only difference is just a few signs but those signs can completely change the physics so it behooves us to look at these two cases separately.
+
+\section{Ideal Fermi Gas}
+
+For Fermi Gases, the occupation number is defined as follows:
+
+$$n(k)=\frac{1}{e^{\beta(E_{k}-\mu)}+1}$$
+
+%Insert Fermi Momentum Diagram
+
+The value of $k$ where $n$ goes from $\cong 1$ to $\cong 0$:
+
+$$E_{k}-\mu=0\rightarrow$$
 
 \end{document}
