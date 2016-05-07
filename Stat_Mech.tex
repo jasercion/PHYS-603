@@ -818,7 +818,7 @@ $$=g\int\frac{d^{3}k}{(2\pi^{3})}\frac{1}{e^{\beta(E_{k}-\mu)}\mp1}$$
 
 Similarly,
 
-$$S=-\pardif{\Omega}{T}=\mp\bltz gV\int\dtk\ln{1\mp\ebk}+\bltz gV\int\dtk\frac{\frac{1}{\bltz T^{2}}\ebk\epsilon_{k}}}{1\mp\ebk}$$
+$$S=-\pardif{\Omega}{T}=\mp\bltz gV\int\dtk\ln{1\mp\ebk}+\bltz gV\int\dtk\frac{\frac{1}{\bltz T^{2}}\ebk\epsilon_{k}}{1\mp\ebk}$$
 
 Where we have defined a new variable $\epsilon_{k}=E_{k}-\mu$.  Continuing:
 
@@ -855,7 +855,7 @@ Which means our system has a low occupation number.  One thing to note is that $
 
 $$\frac{N}{V}=g\int\dtk n(k)\cong gVe^{\beta\mu}\int_{0}^{\infty}dk\frac{4\pi k^{2}}{8\pi^{3}}e^{-\frac{\beta\hbar^{2}k^{2}}{2m}}$$
 
-Where $\int_{0}^{\infty}dk\frac{4\pi k^{2}}{8\pi^{3}}e^{-\frac{\beta\hbar^{2}k^{2}}{2m}}=\frac{1}{8\pi^{3}(\frac{2\pi m\bltz T}{\hbar^{2}})^{\frac{3}{2}}$.  To simplify further, we recall the the Thermal De Broglie Wavelength is $\lambda_{T}=\sqrt{\frac{\hbar^{2}}{2\pi m\bltz T}}$, meaning we can write our particle density expression in the following form:
+Where $\int_{0}^{\infty}dk\frac{4\pi k^{2}}{8\pi^{3}}e^{-\frac{\beta\hbar^{2}k^{2}}{2m}}=\frac{1}{8\pi^{3}(\frac{2\pi m\bltz T}{\hbar^{2}})^{\frac{3}{2}}}$.  To simplify further, we recall the the Thermal De Broglie Wavelength is $\lambda_{T}=\sqrt{\frac{\hbar^{2}}{2\pi m\bltz T}}$, meaning we can write our particle density expression in the following form:
 	
 $$\frac{N}{V}=ge^{\beta\mu}\frac{1}{\lambda_{T}^{3}}$$
 
@@ -863,7 +863,7 @@ The Helmholtz Free Energy is given by:
 
 $$F=E-TS=\Omega+\mu N\cong\pm\bltz T gV\int\dtk\ln{1\mp\ebk}+\mu N$$
 
-Let's stop here for a moment and look at the above expression.  We know that $\ln{1\mp\ebk}\cong\mpe^{\beta\mu}e^{-\beta E_{k}}$ in the limit $-\mu>>T$  This means that in this limit we can approximate the first term, $\pm\bltz T gV\int\dtk\ln{1\mp\ebk}$, as $TN$.  In our classical case this is much less than the value of the second term $\mu N$.  
+Let's stop here for a moment and look at the above expression.  We know that $\ln{1\mp\ebk}\cong\mp e^{\beta\mu}e^{-\beta E_{k}}$ in the limit $-\mu>>T$  This means that in this limit we can approximate the first term, $\pm\bltz T gV\int\dtk\ln{1\mp\ebk}$, as $TN$.  In our classical case this is much less than the value of the second term $\mu N$.  
 
 Continuing our analysis, we find:
 
@@ -893,6 +893,47 @@ $$n(k)=\frac{1}{e^{\beta(E_{k}-\mu)}+1}$$
 
 The value of $k$ where $n$ goes from $\cong 1$ to $\cong 0$:
 
-$$E_{k}-\mu=0\rightarrow$$
+$$E_{k}-\mu=0\rightarrow k=\frac{\sqrt{2m\mu}}{\hbar}\equiv k_{f}$$
+
+$k_{f}$ is a special term which we will call the \textbf{Fermi Momentum}.
+
+Examining this term, let's find the range of $k$ which $n$ goes from $\cong1$ to $\cong0$:
+
+$$E_{k}-\mu\cong\bltz T\rightarrow\frac{\hbar^{2}}{2m}(k^{2}-k_{f}^{2})\cong\bltz T\rightarrow k-k_{f}\cong\frac{m}{\hbar k_{f}}\frac{\bltz T}{\hbar}$$
+
+We are able to make this leap because $(k^{2}-k_{f}^{2})=(k+k_{f})(k-k_{f})\cong2k_{f}(k-k_{f})$ and $k\cong k_{f}$.  The term $\frac{\hbar k_{f}}{m}$ is another special quantity known as the \textbf{Fermi Velocity}.
+
+Defined in words, the Fermi Momentum and the Fermi Velocity are the momentum and group velocity of a fermion at the Fermi surface.  
+
+We know that the dilute ($e^{\beta\mu}<<1$) regime is classical.  So now we'll concentrate on the opposite regime, i.e. a degenerate Fermi gas.
+
+\subsubsection{The Fermi Surface and the Sommerfeld Expansion}
+
+%Insert Fermi Sphere diagram
+
+In order to extract the physics from the formulae above we will need integrals of the form
+
+$$\int_{0}^{\infty}dkk^{2\alpha}n(k)$$
+
+in the low temperature (high $\beta$) limit.  The low T expansion is a little tricky and is known as the \textbf{Sommerfeld Expansion}.  
+
+$$I(\alpha)=\int_{0}^{\infty}dkk^{2\alpha}n(k)=\int_{0}^{\infty}dE\frac{m}{\hbar^{2}}k^{2\alpha-1}n(E)$$
+
+Noting that here $k^{2\alpha-1}=(\frac{2mE}{\hbar^{2}})^{2\alpha-1}$ and $E=\frac{\hbar^{2}k^{2}}{2m}$, $dE=\frac{\hbar^{2}k}{2m}dk$.
+
+Therefore,
+
+$$I(\alpha)=(\frac{2m}{\hbar^{2}})^{\alpha-\frac{1}{2}}\frac{m}{\hbar^{2}}\int_{0}^{\infty}dEE^{\alpha-\frac{1}{2}}n(E)$$
+
+Where $\frac{1}{e^{\beta(E-\mu)+1}}$.
+
+The \underline{difference} between $n(E)$ and its zero temperature limit is concentrated around the Fermi Surface.  The following steps make use of this observation.
+
+%Insert T=0 graph
+
+$$\int_{0}^{\infty}dEE^{\alpha-\frac{1}{2}}n(E)=n(E)\frac{E^{\alpha+\frac{1}{2}}}{\alpha+\frac{1}{2}}\vert_{0}^{\infty}-\int_{0}^{\infty}dE\frac{E^{\alpha+\frac{1}{2}}}{\alpha+\frac{1}{2}}\frac{dn(E)}{dE}$$
+
+$$=\beta\int_{0}^{\infty}\frac{dE}{\alpha+\frac{1}{2}}[\mu^{\alpha+\frac{1}{2}}+\frac{(E-\mu)^{\alpha+\frac{1}{2}}}{\beta}\mu^{\alpha-\frac{1}{2}}+\frac{(E-\mu)^{2}\mu^{\alpha-\frac{3}{2}}}{2\beta^{2}}(\alpha+\frac{1}{2})(\alpha-\frac{1}{2})+...]*\frac{e^{\beta(E-\mu)}}{(e^{\beta(E-\mu)^{2}}+1)^{2}}$$
+
 
 \end{document}
