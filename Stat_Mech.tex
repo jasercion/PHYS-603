@@ -28,6 +28,7 @@
 \newcommand{\sumser}[2]{\sum\limits_{#1}^{#2}}
 \newcommand{\dtk}{\frac{d^{3}k}{2\pi^{3}}}	
 \newcommand{\ebk}{e^{-\beta\epsilon_{k}}}
+\newcommand{\qmom}{\frac{\hbar^{2}}{2m}}
 
 \title{Lectures on Statistical Mechanics and Thermodynamics}
 \author{Paolo Bedaque}
@@ -934,6 +935,175 @@ The \underline{difference} between $n(E)$ and its zero temperature limit is conc
 $$\int_{0}^{\infty}dEE^{\alpha-\frac{1}{2}}n(E)=n(E)\frac{E^{\alpha+\frac{1}{2}}}{\alpha+\frac{1}{2}}\vert_{0}^{\infty}-\int_{0}^{\infty}dE\frac{E^{\alpha+\frac{1}{2}}}{\alpha+\frac{1}{2}}\frac{dn(E)}{dE}$$
 
 $$=\beta\int_{0}^{\infty}\frac{dE}{\alpha+\frac{1}{2}}[\mu^{\alpha+\frac{1}{2}}+\frac{(E-\mu)^{\alpha+\frac{1}{2}}}{\beta}\mu^{\alpha-\frac{1}{2}}+\frac{(E-\mu)^{2}\mu^{\alpha-\frac{3}{2}}}{2\beta^{2}}(\alpha+\frac{1}{2})(\alpha-\frac{1}{2})+...]*\frac{e^{\beta(E-\mu)}}{(e^{\beta(E-\mu)^{2}}+1)^{2}}$$
+
+$$E^{\alpha+\frac{1}{2}}=\mu^{\alpha+\frac{1}{2}}+(E-\mu)(\alpha+\frac{1}{2})\mu^{\alpha-\frac{1}{2}}+\frac{1}{2}(E-\mu)^{2}(\alpha+\frac{1}{2})(\alpha-\frac{1}{2})\mu^{\alpha-\frac{3}{2}}+...$$
+
+$$=\frac{1}{\alpha+\frac{1}{2}}\int_{-\beta\mu}^{\infty}dx[\mu^{\alpha+\frac{1}{2}}+x\mu^{\alpha-\frac{1}{2}}(\alpha+\frac{1}{2})+x^{2}\frac{\mu^{\alpha-\frac{3}{2}}}{2\beta^{2}}(\alpha+\frac{1}{2})(\alpha-\frac{1}{2})+...]\frac{e^{x}}{(e^{x}+1)^{2}}$$
+
+Where $\beta(E-\mu)=x$ and $\beta dE=dx$.
+
+Now, the integrand is exponentially small between $x=-\beta\mu$ and $x=-\infty$.  So we can state
+
+$$\cong\frac{1}{\alpha+\frac{1}{2}}\int_{-\infty}^{\infty}dx[\mu^{\alpha+\frac{1}{2}}+x(\alpha+\frac{1}{2})\mu^{\alpha-\frac{1}{2}}+x^{2}\frac{\mu^{\alpha-\frac{3}{2}}}{2\beta^{2}}(\alpha+\frac{1}{2})(\alpha-\frac{1}{2})+....]*\frac{e^{x}}{(e^{x}+1)^{2}}
+$$
+
+But $\int_{-\infty}^{\infty}dx\frac{x^{n}e^{x}}{(e^{x}+1)^{2}}=0$ for odd n, $\int_{-\infty}^{\infty}dx\frac{e^{x}}{(e^{x}+1)^{2}}=1$, $\int_{-\infty}^{\infty}dx\frac{x^{2}e^{x}}{(e^{x}+1)^{2}}=\frac{\pi^{2}}{3}$, ...
+
+so
+
+$$\int_{0}^{\infty}dEE^{\alpha-\frac{1}{2}}n(E)\cong\frac{1}{\alpha+\frac{1}{2}}[\mu^{\alpha+\frac{1}{2}}+\frac{\pi^{2}}{6}(\alpha^{2}-\frac{1}{4})\bltz^{2}T^{2}+\theta((\frac{\bltz T}{\mu})^{4})]$$
+
+%Insert diagram
+
+Using the Sommerfeld Expansion we find:
+
+$$N=gV\int\dtk n(k)=\frac{gV}{2\pi^{2}}\int_{0}^{\infty}dkn(k)-\frac{gV}{2\pi^{2}}\frac{\sqrt{2m}}{\hbar}\frac{m}{\hbar^{2}}\int_{0}^{\infty}dEE^{\frac{1}{2}}n(E)$$
+
+$\alpha=1$ in the Sommerfeld formula.  The integral $ \int_{0}^{\infty}dEE^{\frac{1}{2}}n(E)$ is equivalent to $\frac{1}{\frac{3}{2}[\mu^{\frac{3}{2}}+\frac{\pi^{2}}{6}\frac{3}{4}\frac{(\bltz T)^{2}}{n^{\frac{1}{2}}}]}$
+
+$$\cong gV\frac{\sqrt{2}}{3\pi^{2}}(\frac{m\mu}{\hbar^{2}})^{\frac{3}{2}}[1+\pi^{2}(\frac{\bltz T}{\mu})^{2}+...]$$
+
+Where $\frac{\sqrt{2}}{3\pi^{2}}=\frac{k_{f}^{3}}{6\pi^{2}}$.
+
+$$E=gV\int\dtk E_{k}n(k)=gV\frac{\hbar^{2}}{2\pi^{2}}\frac{1}{2m}\int_{0}^{\infty}dkk^{4}n(k)$$
+$$=gV\frac{1}{2\pi^{2}}\qmom(\frac{2m}{\hbar^{2}})^{\frac{3}{2}}\frac{m}{\hbar^{2}}\int_{0}^{\infty}dEE^{\frac{3}{2}}n(E)$$
+
+$\alpha=2$ in the Sommerfeld formula.  $\int_{0}^{\infty}dEE^{\frac{3}{2}}n(E)$ is equivalent to $\frac{1}{\frac{5}{2}}\mu^{\frac{5}{2}}[1+\frac{\pi^{2}}{6}(\frac{\bltz T}{\mu})^{2}\frac{15}{4}+...]$.
+
+$$\cong gV\qmom(\frac{m\mu}{\hbar^{2}})^{\frac{5}{2}}\frac{2^{\frac{3}{2}}}{5\pi^{2}}[1+5\pi^{2}(\frac{\bltz T}{\mu})^{2}+...]$$
+
+In the above expression the '1' term in the summation is the Fermi Sphere and the subsequent terms are the particle hole excitations.  We can invert the $\alpha=1$ expression to find $\mu$ as a function of $N$ up to higher orders in $\frac{\bltz T}{\mu}$:
+
+$$(\frac{m\mu}{\hbar^{2}})^{\frac{3}{2}}=\frac{N}{gV}\frac{3\pi^{2}}{\sqrt{2}}\frac{1}{1+\frac{\pi^{2}}{8}(\frac{\bltz T}{\mu})^{2}}$$
+
+$$\mu^{\frac{3}{2}}\cong\frac{\hbar^{3}}{m^{\frac{3}{2}}}(\frac{N}{gV}\frac{3\pi^{2}}{\sqrt{2}})^{\frac{2}{3}}[1-\frac{\pi^{2}}{8}(\frac{\bltz T}{\mu})^{2}]^{\frac{2}{3}}$$
+
+$\frac{\hbar^{3}}{m^{\frac{3}{2}}}(\frac{N}{gV}\frac{3\pi^{2}}{\sqrt{2}})^{\frac{2}{3}}$ is equivalent to $[\qmom(\frac{N}{V}\frac{6\pi^{2}}{g}^{\frac{2}{3}})]^{\frac{3}{2}}$.  Within the brackets, 1 is the leading term and $\frac{\pi^{2}}{8}(\frac{\bltz T}{\mu})^{2}]^{\frac{2}{3}}$ is the $\theta(\frac{\bltz T}{\mu})$ correction term.
+
+Therefore,
+
+$$\mu^{\frac{3}{2}}\cong\epsilon_{f}^{\frac{3}{2}}[1-\frac{\pi^{2}}{12}(\frac{\bltz}{\epsilon_{f}})^{2}]$$
+
+Within the brackets, we see the difference between $\epsilon_{f}$ and $\mu$ is higher order in $\frac{\bltz T}{\epsilon_{f}}$.
+
+$$E\cong\qmom gV(\frac{m\mu}{\hbar^{2}})^{\frac{5}{2}}\frac{2^{\frac{3}{2}}}{5\pi^{2}}[1+\frac{5\pi^{2}}{8}(\frac{\bltz T}{\mu})^{2}]$$
+
+$$\cong\frac{3}{5}N\epsilon_{f}[1+\frac{5}{12}\pi^{2}(\frac{T}{T_{f}})^{2}+...]$$
+
+Again, within the brackets we have the '1' term representing the Fermi Sphere, the subsequent term representing particle-hole excitations which depend on $T_{f}$: the Fermi Temperature.
+
+The Specific Heat at Constant Volume is:
+
+$$c_{v}=\frac{1}{N}\thermdif{E}{T}{V}{N}=\frac{3}{5}\epsilon_{f}\frac{5\pi^{2}}{12}\frac{2T}{T_{f}^{2}}=\frac{\pi^{2}}{2}\frac{\bltz T}{T_{f}}$$
+
+One thing that is important to note is that the specific heat is linear in T, as opposed to the classical $c_{v}~\frac{3N}{2}\bltz$.
+
+\section{Ideal Bose Gas}
+
+For an ideal Bose gas, we have the following occupation number expression:
+
+$$n(k)=\frac{1}{e^{\beta(E_{k}-\mu)}-1}$$
+
+%insert graph
+
+This expression diverges at $E_{k}=\mu$ if $\mu>0$.  That's because there is no energy cost in adding bosons to the system.  Therefore, the chemical potential must be negative.
+
+This means that 
+
+$$N=gV\int\dtk\frac{1}{\frac{1}{z}e^{\beta E_{k}}-1}=gV\frac{1}{2\pi^{2}}\frac{m}{\beta\hbar^{2}}\int_{0}^{\infty}dx\sqrt{\frac{2m}{\beta\hbar^{2}}}\frac{\sqrt{x}}{\frac{1}{z}e^{x}-1}$$
+
+Where $\frac{\beta\hbar^{2}k^{2}}{2m}=x$ and $\frac{\beta\hbar^{2}k}{m}dk=dx$.  The variable $z$ represents a special property of the system known as the \textbf{fugacity}.  In this case we know that $0<z=e^{\beta\mu}<1$.
+
+$$N=gV\frac{1}{4\pi^{2}}(\frac{2m\bltz T}{\hbar^{2}})^{\frac{3}{2}}\frac{\sqrt{\pi}}{2}g_{\frac{3}{2}}(z)$$
+
+with $$g_{\alpha}(z)=\frac{1}{\Gamma(\alpha)}\int_{0}^{\infty}dx\frac{x^{\alpha-1}}{\frac{1}{z}e^{x}-1}$$
+
+$$=\frac{1}{\Gamma(\alpha)}\int_{0}^{\infty}dxx^{\alpha-1}\sumser{n=1}{\infty}e^{-nx}z^{n}$$
+
+$$=\sumser{n=1}{\infty}\frac{z^{n}}{n^{\alpha}}$$
+
+so $g_{\frac{3}{2}}(1)=\sumser{n=1}{\infty}\frac{1}{n^{\frac{3}{2}}}=\zeta(\frac{3}{2})\cong2.61$  As a reminder, $\zeta$ is the Riemann Zeta Function.  
+
+%Insert graph
+
+$$N=gV(\frac{m\bltz T}{2\pi\hbar^{2}})^{\frac{3}{2}}g_{\frac{3}{2}(z)}$$
+
+We can see that $(\frac{m\bltz T}{2\pi\hbar^{2}})^{\frac{3}{2}}=\frac{1}{\lambda_{T}^{3}}$  It seems that if $\frac{N}{V}$and T are chosen so that $\frac{N}{gV}\lambda_{T}^{3}>\zeta(\frac{3}{2})$.  However, there is no such value of z that would satisfy this equation.  The mistake we made was in approximating the sum over single particle states by an integral.  This approximation is valid if and only if n(k) is smooth.  But the occupation number is singular at $\mathbb{k}=0$: a macroscopic fraction of the particles occupy the $\mathbb{k}=0$ state and explains the difference between N and $\frac{gV}{\lambda_{T}^{3}}g_{\frac{3}{2}}(1).$  This is obvious at $T=0$.  All particles want (and can) to fall to the $\mathbb{k}=0$ state:
+	
+$$N=gV\int\dtk\frac{1}{\frac{1}{z}e^{\beta E_{k}}-1}+N_{0}$$
+
+Where $N_{0}$ is the number of particles in the $\mathbb{k}=0$ mode. 
+
+$$=\frac{gV}{\lambda_{T}^{3}}g_{\frac{3}{2}}(z)+N_{0}$$
+
+As long as $\frac{N}{gV}<\frac{\zeta(\frac{3}{2})}{\lambda_{t}^{3}}$, $N_{0}$ vanishes.  If $\frac{N}{gV}>\frac{\zeta(\frac{3}{2})}{\lambda_{T}^{3}}$, $N_{0}$ is given by $N_{0}=N-\frac{gV}{\lambda_{T}^{3}}\zeta(\frac{3}{2})$.  The transition happens at 
+
+$$\frac{1}{\lambda_{T}^{3}}=(\frac{m\bltz T_{c}}{\hbar^{2}})^{\frac{3}{2}}=\frac{N}{gV}\frac{1}{\zeta(\frac{3}{2})}$$
+
+or
+
+$$\bltz T_{c}=\frac{\hbar^{2}}{m}n^{\frac{2}{3}}\frac{1}{\zeta(\frac{3}{2})^{\frac{2}{3}}}$$
+	
+Where $T_{c}$ is the \textbf{Bose Condensation Temperature} and $n^{\frac{2}{3}}$ is the density.  Above $T_{c}$, $N_{0}=0$ and $N=\frac{gV}{\lambda_{T}^{3}}g_{\frac{3}{2}}(z)$ is valid.  Notice that Bose Condensation occurs when the thermal wavelength is larger than the typical interparticle distance $d\cong(\frac{N}{gV})^{\frac{1}{3}}$:
+
+$$\lambda_{T}\leq d$$
+
+Implies \textbf{Bose-Einstein Condensation}.  When the particle wavelength begin to overlap, patterns of interference cause the individual particle waves to sync up.  When this occurs, some very strange properties arise.  Thermodynamic quantities have different expressions above and below $T_{c}$:
+
+$$\frac{N_{0}}{N}=1-\frac{gV}{N}\frac{\zeta(\frac{3}{2})}{\lambda_{T}^{3}}, 0=1-\frac{gV}{N}\frac{\zeta(\frac{3}{2})}{\lambda_{T}^{3}}$$
+$$\downarrow$$
+$$1-(\frac{T}{T_{c}})^{\frac{3}{2}}, T<T_{c}$$
+$$0, T>T_{c}$$
+
+$$E=gV\int\dtk\frac{E_{k}}{\frac{1}{z}e^{\beta E_{k}}-1}=gV\frac{1}{2\pi^{2}}\frac{\hbar^{2}}{2m}\int_{0}^{\infty}dk\frac{k^{4}}{\frac{1}{z}e^{\beta\qmom k^{2}}-1}$$
+
+$$\frac{\beta\hbar^{2}k^{2}}{2m}=x$$
+$$\frac{\beta\hbar^{2}}{m}kdk=dx$$
+
+$$=gV\frac{1}{2\pi^{2}}\qmom\frac{m}{\beta\hbar^{2}}(\frac{2m}{\hbar^{2}})^{\frac{3}{2}}\int_{0}^{\infty}dx\frac{x^{\frac{3}{2}}}{\frac{1}{z}e^{x}-1}$$
+$$=\frac{gV}{\beta}(\frac{m\bltz T}{2\pi\hbar^{2}})^{\frac{3}{2}}\frac{3}{2}\frac{4}{3\sqrt{\pi}}\int_{0}^{\infty}dx\frac{x^{\frac{3}{2}}}{\frac{1}{z}e^{x}-1}$$
+
+Note that $\frac{4}{3\sqrt{\pi}}\int_{0}^{\infty}dx\frac{x^{\frac{3}{2}}}{\frac{1}{z}e^{x}-1}$ is $g_{\frac{5}{2}}(z)$.
+
+$$=\frac{3}{2}\frac{gV\bltz T}{\lambda_{T}^{3}}g_{\frac{5}{2}}(z), T>T_{c}$$
+$$=\frac{3}{2}\frac{gV\bltz T}{\lambda_{T}^{3}}g_{\frac{5}{2}}(1), T<T_{c}$$
+
+The specific heat at low temperatures is
+
+$$c_{v}=\frac{1}{N}\thermdif{E}{T}{V}{N}=\frac{3}{2}\frac{gV}{N}g_{\frac{5}{2}}(1)(\frac{m}{2\pi\bltz})^{\frac{3}{2}}(\bltz T)^{\frac{3}{2}}\frac{5}{2}$$
+$$=\frac{15}{4}\frac{gV}{N}\frac{g_{\frac{5}{2}}(1)}{\lambda_{T}^{3}}$$
+$$~T^{\frac{3}{2}}$$
+
+As expected, since the number of particles outside of the condensate is $~T^{\frac{3}{2}}$; the condensate does not carry energy.
+
+An experimental realization of a Bose-Einstein Condensation requires low T, weak interactions, and low mass (in order to make $\lambda_{T}$ larger).  Most substances freeze solid well before they reach $T_{c}$ due to their properties.  However, Helium (4He, to be precise, 3He is a fermion) as a noble gas has small interactions and a small mass and has been forced into a condensate state in experimental settings.  Some of the properties derived above are \textit{qualitatively} correct for liquid 4He but the interactions are still significant so the ideal gas approximation is not quantitatively correct.  4He around $T\cong T_{c}$ is a liquid, its atoms are almost touching each other and the interactions are frequent.  Still, Bose-Einstein condensation does occur in 4He and leads to a bunch of very unusual properties (zero viscosity, extreme heat conduction, etc.) called \textbf{superfluidity}.  To properly study superfluidity we need better tools ("second quantization").  Dilute cold gases of alkali atoms (Na, K,...) were also shown to exhibit Bose-Einstein condensation at extreme low temperatures achievable in atomic traps.  These gases are very close to being ideal.
+
+\section{Phonons}
+
+Although it may seem as though phonons are unrelated to bosonic gases, their behavior is actually very similar.  Consider a lattice of ions (one dimensional for simplicity) connected to each nearest neighbor by a spring:
+
+%insert diagram
+
+Where $x_{n}(t)$ is the \textit{deviation} from the spring equilibrium position of the $n^{th}$ ion.  The classical hamiltonian for such a system would be:
+
+$$\mathcal{H}=\sumser{n=1}{N}[\frac{P_{n}^{2}}{2m}+\frac{m\omega^{2}}{2}(x_{n}-x_{n-1})^{2}]$$
+
+The difference between $X_{n}$ and $x_{n-1}$ is the stretching/compression of the spring.  Notice how the hamiltonian is simply the hamiltonian for a system of coupled harmonic oscillators.  
+
+Again, for simplicity, let's assume $x_{0}=x_{n}$ (periodic boundry conditions).  Change the variables to express the normal modes:
+
+$$x_{n}(t)=\frac{1}{N}\sum_{k}e^{ikan}Q_{k}(t)$$
+$$p_{n}(t)=\frac{1}{N}\sum_{k}e^{ikan}P_{k}(t)$$
+
+With $a$ being the lattice spacing and k in the range (1st Brillouin Zone):
+
+%Insert diagram
+
+Let's rewrite $\mathcal{H}$ in terms of the new coordinates $Q_{n},P_{n}$:
+ 
+
+
+
 
 
 \end{document}
