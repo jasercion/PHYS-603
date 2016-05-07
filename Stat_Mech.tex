@@ -29,6 +29,8 @@
 \newcommand{\dtk}{\frac{d^{3}k}{2\pi^{3}}}	
 \newcommand{\ebk}{e^{-\beta\epsilon_{k}}}
 \newcommand{\qmom}{\frac{\hbar^{2}}{2m}}
+\newcommand{\brad}{R_{\nu}(T)}
+\newcommand{\braddiff}{R_{\nu}(T)d\nu}
 
 \title{Lectures on Statistical Mechanics and Thermodynamics}
 \author{Paolo Bedaque}
@@ -1100,9 +1102,96 @@ With $a$ being the lattice spacing and k in the range (1st Brillouin Zone):
 %Insert diagram
 
 Let's rewrite $\mathcal{H}$ in terms of the new coordinates $Q_{n},P_{n}$:
- 
+
+$$\sumser{n=1}{N}P_{n}^{2}=\frac{1}{N^{2}}\sumser{n=1}{N}\sum_{k}\sum_{k'}e^{i(k+k')an}P_{k}P_{k'}$$
+
+Notice that the expression $ \sumser{n=1}{N}e^{i(k+k')an}$ is simply the delta function multiplied by N, i.e. $N\delta_{k_{1}-k'}$.
+
+$$\sumser{n=1}{N}=\frac{1}{N}\sum_{k}P_{k}P_{-k}=\frac{1}{N}\sum_{k}P_{k}P_{k}^{*}$$
+
+$$\sumser{n=1}{N}(x_{n}-x_{n-1})^{2}=\sumser{n=1}{N}(x_{n}^{2}+x_{n-1}^{2}-x_{n}x_{n-1}-x_{n+1}x_{n})$$
+
+$$=\sumser{n=1}{N}\frac{1}{N^{2}}\sum_{k_{1}k'}Q_{k}Q_{k'}(2e^{ian(k+k')}-e^{iakn+iak'(n-1)}-e^{iak(n+1)+iak'n})$$
+
+$$\sum_{k}Q_{k}Q_{-k}(2-2\cos{ka})=\sum_{k}Q_{k}Q_{k}^{*}4\sin^{2}(\frac{ka}{2})$$
+
+Therefore we can write the hamiltonian as
+
+$$\mathcal{H}=\frac{1}{N}\sum_{k}[\frac{P_{k}^{*}P_{k}}{2m}+\frac{m\omega^{2}4\sin^{2}(\frac{ka}{2})}{2}Q_{k}^{*}Q_{k}]=\frac{1}{N}\sum_{k}[\frac{P_{k}^{*}P_{k}}{2m}+\omega_{k}^{2}Q_{k}^{*}Q_{k}]$$
+
+As we see above, in our system we have 2N \textit{uncoupled} oscillators (N from real part, and N from imaginary) but only N are independent because $Q_{k}^{*}=Q_{-k}$
+
+Classically, each oscillator contributes with $\int dP_{k}dQ_{k}e^{-\beta(\frac{P_{k}^{2}}{2m}+\frac{m}{2}\omega_{k}^{2}Q_{k}^{2})}$ to the partition function.  Quantum mechanically we have:
+
+$$Z=Tr[e^{-\beta\hat{H}}]=\sum_{n_{1},n_{2},n_{3},...}<n_{1}n_{2}...\vert e^{-\beta\hat{H}}\vert n_{1}n_{2}...>$$
+
+As before, Z is the canonical partition function, and $n_{1}...$ is the excitation level of each oscillator.  Continuing:
+
+$$=\sumser{n_{1}=0}{\infty}e^{-\beta\hbar\omega_{k_{1}}(n_{1}+\frac{1}{2})}\sumser{n_{2}=0}{\infty}e^{-\beta\hbar\omega_{k_{2}}(n_{2}+\frac{1}{2})}....$$
+
+$$=\frac{e^{-\beta\hbar\frac{\omega_{k1}}{2}}}{1-e^{-\beta\hbar\omega_{k1}}}\frac{e^{-\beta\hbar\frac{\omega_{k2}}{2}}}{1-e^{-\beta\hbar\omega_{k2}}}....$$
+
+$$F=-\bltz T\ln{z}=-\bltz T\sum_{k}\ln{\frac{e^{-\beta\hbar\frac{\omega_{k}}{2}}}{1-e^{-\beta\hbar\omega_{k}}}}$$
+
+$$=\sum_{\mathbb{k}}\frac{\omega_{k}}{2}+\bltz T\sum_{\mathbb{k}}\ln{1-e^{-\beta\hbar\omega_{k}}}$$
+
+Where the first term is the T-independant Zero-point energy and the second term is a gas of bosonic "quasi-particles" with dispersion relation $\omega_{\mathbb{k}}=2\omega\vert\sin{\frac{ka}{2}}\vert$ and $\mu=0$.
+
+%insert diagram
+
+The state |0000...|...00> has all the properties we expect of a single boson state with a dispersion relation which, at small momenta, is $\omega_{k}=Vk$.  These particles can be created or destroyed (that is, the harmonic oscillator state can be raised or lowered) by heating/cooling/shaking the system.  Thus, their number is not conserved and is not an independent variable but is determined by T,V, etc...  Consequently, there is no $\mu$ cooresponding to the number of phonons.  Had we included higher powers of $X_{n}$ in the hamiltonian the 1,2,3,... phonon states (states like |11000...> or |20000...>) would no longer be eigenstates of $\hat{H}$ so |t=0>=|110000...> could evolve in time to, say, |t>0>=|100100...> or |1111000...>.  In other words, two phonons could scatter from each other and change their momenta or even create other phonons:
+
+%insert scattering diagram
+
+Differently from "regular" particles, there is a maximum momentum $k=\frac{\pi}{a}$ for phonons (actually, we don't know if that is true; how can we be sure there is no maximum momenta for an electron?).  
 
 
+In three dimensions the dispersion relation is complicated and dependant on the crystal structure.  It's, in general, not rotationally symmetric and, since atoms can move in three directions there are three modes of oscillation for every momentum $\mathbb{k}$ one longitudinal and two transverse:
+
+%Insert mode diagrams
+
+All three modes obey $\omega=ck$ (c is the speed of sound, not light) for small $\mathbb{k}$ but the transverse and longitudinal phonons but with different values of c for the two kinds of modes.
+
+Let us now compute the specific heat of a solid due to lattice vibrations(that is, phonons) by making \textbf{The Debye Approximation}:
+
+\begin{itemize}
+	\item $\omega=ck$ for all 3 modes with the same c
+	\item Brillouin Zone (range of allowed $\mathbb{k}$, in the cubic lattice case $-\frac{\pi}{a}<k_{x,y,z}<\frac{\pi}{a}$) is approximated by a sphere with radius $k=k_{b}$ given by: $3N=V\int^{k_0}\dtk$ where we have 3N atom degrees of freedom and $V\int^{k_D}\dtk$ fourier modes.
+\end{itemize} 
+
+Note that the number of degrees of freedom is the same whether we use $\mathbb{r}_{n}$ or $\mathbb{Q}_{\mathbb{k}}$ to describe them.  Therefore, we have:
+
+$$c_{v}=\frac{1}{N}\thermdif{E}{T}{V}{N}=\frac{1}{N}V\frac{\delta}{\delta T}\int^{\bltz}\dtk3\frac{\bar{\omega_{k}}}{e^{\beta\hbar\omega_{k}}-1}$$
+
+$$=\frac{V}{N}3\frac{1}{\bltz T^{2}}\int^{k_{0}}\dtk\frac{(\hbar\omega_{k})^{2}}{(e^{\beta\hbar\omega_{k}}-1)^{2}}e^{\beta\hbar\omega_{k}}$$
+
+$$=3\frac{V}{N}\frac{1}{2\pi^{2}}\frac{(\hbar c)^{2}}{\bltz T^{2}}(\frac{\bltz T}{\hbar c})^{5}\int_{0}^{\beta\hbar ck_{D}}dx\frac{x^{4}}{(e^{x}-1)^{2}}e^{x}$$
+
+Where $x=\frac{\hbar c}{\bltz T}k$.  
+
+For $\bltz T << \hbar ck_{D}$:
+
+$$c_{v}=3\frac{V}{N}\bltz\frac{(\bltz T)^{2}}{(\hbar c)^{3}}\frac{1}{2\pi^{2}}\int_{0}^{\infty}dx\frac{x^{4}e^{x}}{(e^{x}-1)^{2}}=3\frac{V}{N}\bltz\frac{(\bltz T)^{2}}{(\hbar c)^{3}}\frac{1}{2\pi^{2}}\frac{4\pi^{4}}{15}$$
+
+$$c_{v}=\frac{V}{N}\frac{2\pi^{2}}{5}(\frac{\bltz T}{\hbar c})^{3}$$
+
+The $~T^{3}$ low temperature behavior is generic for phonons.  Note:  In lattices with two atoms per cell there are vibration modes where the distance between these atoms oscillates.  Their spectrum is gapped (that is, $\omega_{k}\rightarrow\omega_{0}\neq0$ as $k\rightarrow0$) and, since the atom displacement generates an electric dipole, they couple strongly to electromagnetic waves.  They are called \textit{optical phonons}, as opposed to the $\omega\rightarrow ck$ modes that are called \textit{acoustic phonons}.
+
+\section{Photons and Blackbody Radiation}
+
+Material bodies emit electromagnetic radiation when heated.  In general, the amount and frequencies of the radiation depend on the material properties, such as its size, shape, makeup, etc.  A lot of them, however, are close to one idealized limit: \textbf{The Blackbody}.  A blackbody is an object that absorbs (instead of reflecting) all radiation falling onto it.  All blackbodies, regardless of composition, radiate the same way for any given temperature.  There's a simple argument showing that:
+
+%insert blackbody diagram
+
+This shows that the energy emitted by any blackbody of temperature T (per time, area, etc) is the same, regardless of its size, shape, or composition!  It's a universal function $R_{\nu}(T)$:
+
+$$R_{\nu}(T)d\nu$$
+
+Which describes the power emitted per area between frequencies $\nu$ and $\nu+d\nu$.  A practical way of building a blackbody is to build a box with a hole.  Almost all radiation falling on the hole bounces back inside the internal walls and is eventually absorbed.  Thus, the hold is an excellent approximation to a blackbody.  Theoretically, this is also the best way of analysing blackbody radiation.  Since $\brad$ is universal we might as well consider the simplest black body we can imagine:
+
+%insert simple blackbody diagram.
+
+The electromagnetic waves inside the box are in equilibrium with the walls the same way that the molecules inside a box reach thermal equilibrium.  So, let us apply the laws of statistical mechanics to the waves inside the box.    
 
 
 
