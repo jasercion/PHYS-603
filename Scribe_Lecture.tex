@@ -5,6 +5,7 @@
 \usepackage{graphicx}
 \usepackage{wrapfig}
 \usepackage{tabu}
+\usepackage{float}
 \usepackage{hyperref}
 \graphicspath {{Scribe_Images/}}
 
@@ -38,9 +39,9 @@ As expected from from our previous discussion of First Order Phase Transitions, 
 
 \section{Phase Transitions of the 2-D Ising Model}
 
-In previous lectures we expanded the two dimensional Ising model in both low temperature and high temperature situations in order to determine the spin coorelation ($<\sigma_{0}\sigma_{0+R}>$).  At low temperatures we found that
+In previous lectures we expanded the two dimensional Ising model in both low temperature and high temperature situations in order to determine the spin correlation ($<\sigma_{0}\sigma_{0+R}>$).  At low temperatures we found that
 
-$$<\sigma_{0}\sigma_{0+R}>\approx1+...., <\sigma_{i}>\neq0$$
+$$<\sigma_{0},\sigma_{0+R}>\approx1+...., <\sigma_{i}>\neq0$$
 
 Implying a high correlation between spins at arbitrary distances apart.  At high temperatures, we found that the correlator had a decayed exponential:
 
@@ -48,37 +49,62 @@ $$<\sigma_{0},\sigma_{0+R}>\approx e^{-R\ln{\frac{1}{\beta}}}, <\sigma_{i}>\neq0
 
 Implying an exponentially decaying correlation as the distance between two spin sites increases.  The physical consequence of these two correlations is that a 2-D Ising magnetic system will, at high temperatures, consist of random spin orientations until the temperature lowers enough for the spins to align with the external magnetic field.  This can be summed up in a plot of the average spin vs the system's temperature:
 
-\begin{figure}
+\begin{figure}[H]
+	\centering
 	\includegraphics[width=0.5\linewidth]{Scribe_Images/spin_symmetry.png}
 \end{figure}
 
 The temperature at which the system spontaneously magnetizes is called the \textbf{critical temperature}.  Now, looking at this graph it is plain that at low temperatures the spins in the system tend to align either up or down.  This implies that the average spin of the system be non-zero, $<\sigma_{i}>\neq0$.  But this introduces an apparent paradox: how can the average spin be non-zero if the system is symmetrical?  Put another way, for every spin configuration there is another symmetrical configuration which is equally probable (e.g. the probability of $<\uparrow\uparrow\uparrow>$ is the same as $<\downarrow\downarrow\downarrow>$, the probability of $<\uparrow\downarrow\uparrow>$ is the same as $<\downarrow\uparrow\downarrow>$, etc...)  Shown mathematically:
 
-$$\mathcal{H}_{2-D Ising}=-J\sum_{links}\sigma_{i}\sigma_{j}-h\sum_{i}\sigma_{i}$$
+$$\mathcal{H}_{2D\ Ising}=-J\sum_{links}\sigma_{i}\sigma_{j}-h\sum_{i}\sigma_{i}$$
 
 Therefore the partition function is 
 
 $$Z=\sum e^{\beta J\sum_{links}\sigi\sigj+\beta h\sum_{i}\sigi}$$
 
-%Finish math justification.
+Using the partition function we can easily show the average sum of the system's spins:
 
-So, since the average spin of any single site is 0, clearly we should have see no magnetization at low temperatures!  To resolve this paradox, we must consider the physical system of such a ferromagnet.  If you take a finite amount of material and cool it down, one direction will dominate the spins.  But by chance spins can flip and one enough change at once the entire system flips its spin state:
+$$\frac{1}{\beta}\pardif{\ln{Z}}{h}=\frac{1}{\beta Z}\sum_{\sigma}(\beta\sum_{i}\sigi)e^{\beta J\sum\sigi\sigj+\beta h\sum_{i}\sigi}=<\sum_{i}\sigi>$$
 
-\begin{figure}
-	\includegraphics[width=0.5\linewidth]{Scribe_Images/spin_state_time.png}
-\end{figure}
+From here, we want to calculate the average spin at a single lattice site.  This piece of information tells us whether, on average, the system is magnetized ($<\sigi>\neq0$) or unmagnetized ($<\sigi>=0$).  The average of 'up' ($<\sigma>$) spins is expressed as
 
-For a large system, a large number of spins need to flip at once in order to affect the state of the entire system.  If we inspect the limit where time approaches infinity, the state will flip and the average spin state will be zero.  However, the time it takes for the system to change from its initial spin-aligned state to its corresponding spin symmetrical state (also known as the system's \textbf{correlation time}) may be much longer than we could possibly observe.  For some systems, the correlation time would be longer than our sun's life span or the heat death of the universe, so for all intents and purposes these systems remain in the magnetized (spin-aligned) state.
+$$<\sigi>=\frac{1}{Z}\sum_{\sigma}e^{-\beta\mathcal{H}[\sigma]}\sigi$$
 
-\begin{figure}
-	\includegraphics[width=0.5\linewidth]{Scribe_Images/Correlation_Time.png}
-\end{figure}
+To find the average of 'down' ($<-\sigma>$) spins, we can perform a change of variable by setting $\sigma^{'}=-\sigma$.  Plugging this into our expression, we find that this average is equal to the previous 'up' spin average:
+
+\begin{equation*}
+\begin{split}
+	<\sigi> & =\frac{1}{Z}\sum_{\sigma}e^{-\beta\mathcal{H}[\sigma]}\sigi \\
+			   & =\frac{1}{Z}\sum_{\sigma}e^{-\beta\mathcal{H}[-\sigma]}\sigi\ \ (1)\\
+			   & =-\frac{1}{Z}\sum_{\sigma^{'}}e^{-\beta\mathcal{H}[\sigma^{'}]}\sigi^{'}\ (2)
+\end{split}
+\end{equation*}
+
+This is true because $\mathcal{-\sigma}=\mathcal{\sigma}$.  i.e. The hamiltonian has $\mathbb{Z}_{2}$ symmetry.  The consequence of this symmetry is the fact that (1) and (2) above are equal, which implies that $<\sigi>=0$.  So, since the average spin of any single site is 0, clearly we should have see no magnetization at low temperatures!  To resolve this paradox, we must consider the physical system of such a ferromagnet.  If you take a finite amount of material and cool it down, one direction will dominate the spins.  But by chance spins can flip and one enough change at once the entire system flips its spin state:
+
+\begin{wrapfigure}{l}{0.25\textwidth}
+	\centering
+	\includegraphics[width=1\linewidth]{Scribe_Images/spin_state_time.png}
+\end{wrapfigure}
+
+For a large system, a large number of spins need to flip at once in order to affect the state of the entire system.  If we inspect the limit where time approaches infinity, the state will flip and the average spin state will be zero.  However, the time it takes for the system to change from its initial spin-aligned state to its corresponding spin symmetrical state (also known as the system's \textbf{correlation time}) may be much longer than we could possibly observe: 
+
+\begin{wrapfigure}{r}{0.25\textwidth}
+	\centering
+	\includegraphics[width=1\linewidth]{Scribe_Images/Correlation_Time.png}
+\end{wrapfigure}
+
+For some systems, the correlation time would be longer than our sun's life span or the heat death of the universe, so for all intents and purposes these systems remain in the magnetized (spin-aligned) state.
 
 In order to resolve this situation in our statistical mechanics formalism, we need to employ a technical trick.  
 
 $$m=\frac{1}{V}<\sum_{i}\sigi>=\lim\limits_{h\rightarrow0}\lim\limits_{V\rightarrow0}<\sigi>_{h}$$
 
 Here we are taking a hypothetical system and applying an external field to it to align the individual spins within the system.  We then allow the system's volume to approach infinity, which allows the spin correlation time to become infinite.  This now allows us to take the external field to zero, removing the external magnetic field while keeping the spontaneous magnetization of the system frozen.  
+
+In summary, because $\mathcal{H}[-\sigma]=\mathcal{H}[\sigma]:\mathbb{Z}_{2}\ Symmetry$, the system at low temperatures no longer 
+
+%add section on spontaneous symmetry breaking
 
 \section{Mean Field Approximation}
 
@@ -96,13 +122,14 @@ Now that we have found Z we can find the magnetization, m:
 
 $$m\frac{1}{\beta}\pardif{\ln{Z_{0}}}{h}=\tanh{\beta h}$$
 
-\begin{figure}
-	\includegraphics[width=0.5\linewidth]{Scribe_Images/mag_curve.png}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=.75\linewidth]{Scribe_Images/mag_curve.png}
 \end{figure}
 
 Now that we know how this the magnetization of this simple system behaves, let's try to fit the Ising model to this system.  As before,
 
-$$H=-J\sum_{links}\sigi\sigj-h\sum_{i}\sigi=\sum_{sites}\sigi[-\frac{J}{2}\sum_{Nearest Neighbors}\sigj-h]$$
+$$H=-J\sum_{links}\sigi\sigj-h\sum_{i}\sigi=\sum_{sites}\sigi[-\frac{J}{2}\sum_{Nearest\ Neighbors}\sigj-h]$$
 
 In this final form, we see that we have separated the hamiltonian into two parts: the simple sum of the individual spin sites multiplied by the sum over the nearest neighbor interactions in the presence of the external field.  We can call our second term the \textit{effective magnetic field}, or $h_{eff}$, as it represents the external field taking into account the nearest neighbor interactions.  
 
@@ -120,16 +147,17 @@ Solving for the effective magnetic field on our system yields:
 
 $$h_{eff}=h+2J<\sigj>=h+2J[\tanh{\beta h_{eff}}]$$
 
-This expression is known as the $mean field equation$.
+This expression is known as the \textit{mean field equation} for the effective magnetic field.
 
 From our previous warm up model, we already know the expression for the system's magnetization:
 
-$$m=\tanh{\beta h_{eff}}$$  
+$$\boxed{m=\tanh{\beta h_{eff}}}$$  
 
 So now we can graphically display the system's behavior as we vary the temperature and effective field.  For the case where the external field is 0:
 
-\begin{figure}
-	\includegraphics[width=0.5\linewidth]{Scribe_Images/tcrit_curve.png}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.75\linewidth]{Scribe_Images/tcrit_curve.png}
 \end{figure}
 
 We see that at high temperatures, the mean field equation has only one solution: $h_{eff}=0$.  This is expected, as at high temperatures we should see no magnetization at all.  At low temperatures there are three intersections: one positive, one negative, and one at the origin.  The positive and negative intersections correspond to the states where the magnetization is positive and negative, respectively.  The origin intersection state is unstable.  While it is theoretically possible for the system to be in the zero magnetization state at low temperatures, any slight perturbation of the system will find it rapidly transitioning to either the positive or negative magnetization state.  
@@ -142,9 +170,9 @@ In order to determine the functions behavior when $h_{eff}$ is close to but not 
 
 $$\frac{2J}{\bltz T_{c}}=1$$
 
-Giving our final expression of 
+Giving our final expression of $\bltz T_{c}=2J$, or 
 
-$$\bltz T_{c}=2J$$
+$$\boxed{T_{c}=\frac{2J}{\bltz}}$$
 	
 
  
