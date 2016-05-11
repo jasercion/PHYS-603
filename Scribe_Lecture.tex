@@ -1,4 +1,4 @@
-documentclass{article}
+\documentclass{article}
 \usepackage{amsthm}
 \usepackage{amsmath}
 \usepackage{amsfonts}
@@ -6,7 +6,7 @@ documentclass{article}
 \usepackage{wrapfig}
 \usepackage{tabu}
 \usepackage{hyperref}
-\graphicspath {{Images/}}
+\graphicspath {{Scribe_Images/}}
 
 \makeatletter
 \def\lecture{\@ifnextchar[{\@lectureWith}{\@lectureWithout}}
@@ -26,17 +26,132 @@ documentclass{article}
 \newcommand{\dif}[2]{\frac{d#1}{d#2}}
 \newcommand{\bltz}{k_{B}}
 \newcommand{\sumser}[2]{\sum\limits_{#1}^{#2}}
-\newcommand{cmd}{def}
+\newcommand{\sigi}{\sigma_{i}}
+\newcommand{\sigj}{\sigma_{j}}
 
 \title{Second Order Phase Transitions}
 \author{Paolo Bedaque}
 \begin{document}
 \maketitle
 
-As expected from from our previous discussion of First Order Phase Transitions, \textbf{Second Order Phase Transitions} (or "Continous Transitions") are transiions where the first derivative of the free energy is now continuous and the second derivative is discontinuous.  The archetypal example of this system is our old friend: The Two-Dimensional Ising Model.
+As expected from from our previous discussion of First Order Phase Transitions, \textbf{Second Order Phase Transitions} (or "Continous Transitions") are transitions where the first derivative of the free energy is now continuous and the second derivative is discontinuous.  The archetypal example of this system is our old friend: The Two-Dimensional Ising Model.
 
 \section{Phase Transitions of the 2-D Ising Model}
 
-In previous lectures we expanded the two dimensional Ising model in both low temperature and high temperature situations in order to determine the spin coorelation (<\sigma_{0}\sigma_{0+R}>).  At low temperatures we found that
+In previous lectures we expanded the two dimensional Ising model in both low temperature and high temperature situations in order to determine the spin coorelation ($<\sigma_{0}\sigma_{0+R}>$).  At low temperatures we found that
 
-$$<\sigma_{0}\sigma_{0+R}>\approx1+....+<\sigma_{i}>
+$$<\sigma_{0}\sigma_{0+R}>\approx1+...., <\sigma_{i}>\neq0$$
+
+Implying a high correlation between spins at arbitrary distances apart.  At high temperatures, we found that the correlator had a decayed exponential:
+
+$$<\sigma_{0},\sigma_{0+R}>\approx e^{-R\ln{\frac{1}{\beta}}}, <\sigma_{i}>\neq0$$
+
+Implying an exponentially decaying correlation as the distance between two spin sites increases.  The physical consequence of these two correlations is that a 2-D Ising magnetic system will, at high temperatures, consist of random spin orientations until the temperature lowers enough for the spins to align with the external magnetic field.  This can be summed up in a plot of the average spin vs the system's temperature:
+
+\begin{figure}
+	\includegraphics[width=0.5\linewidth]{Scribe_Images/spin_symmetry.png}
+\end{figure}
+
+The temperature at which the system spontaneously magnetizes is called the \textbf{critical temperature}.  Now, looking at this graph it is plain that at low temperatures the spins in the system tend to align either up or down.  This implies that the average spin of the system be non-zero, $<\sigma_{i}>\neq0$.  But this introduces an apparent paradox: how can the average spin be non-zero if the system is symmetrical?  Put another way, for every spin configuration there is another symmetrical configuration which is equally probable (e.g. the probability of $<\uparrow\uparrow\uparrow>$ is the same as $<\downarrow\downarrow\downarrow>$, the probability of $<\uparrow\downarrow\uparrow>$ is the same as $<\downarrow\uparrow\downarrow>$, etc...)  Shown mathematically:
+
+$$\mathcal{H}_{2-D Ising}=-J\sum_{links}\sigma_{i}\sigma_{j}-h\sum_{i}\sigma_{i}$$
+
+Therefore the partition function is 
+
+$$Z=\sum e^{\beta J\sum_{links}\sigi\sigj+\beta h\sum_{i}\sigi}$$
+
+%Finish math justification.
+
+So, since the average spin of any single site is 0, clearly we should have see no magnetization at low temperatures!  To resolve this paradox, we must consider the physical system of such a ferromagnet.  If you take a finite amount of material and cool it down, one direction will dominate the spins.  But by chance spins can flip and one enough change at once the entire system flips its spin state:
+
+\begin{figure}
+	\includegraphics[width=0.5\linewidth]{Scribe_Images/spin_state_time.png}
+\end{figure}
+
+For a large system, a large number of spins need to flip at once in order to affect the state of the entire system.  If we inspect the limit where time approaches infinity, the state will flip and the average spin state will be zero.  However, the time it takes for the system to change from its initial spin-aligned state to its corresponding spin symmetrical state (also known as the system's \textbf{correlation time}) may be much longer than we could possibly observe.  For some systems, the correlation time would be longer than our sun's life span or the heat death of the universe, so for all intents and purposes these systems remain in the magnetized (spin-aligned) state.
+
+\begin{figure}
+	\includegraphics[width=0.5\linewidth]{Scribe_Images/Correlation_Time.png}
+\end{figure}
+
+In order to resolve this situation in our statistical mechanics formalism, we need to employ a technical trick.  
+
+$$m=\frac{1}{V}<\sum_{i}\sigi>=\lim\limits_{h\rightarrow0}\lim\limits_{V\rightarrow0}<\sigi>_{h}$$
+
+Here we are taking a hypothetical system and applying an external field to it to align the individual spins within the system.  We then allow the system's volume to approach infinity, which allows the spin correlation time to become infinite.  This now allows us to take the external field to zero, removing the external magnetic field while keeping the spontaneous magnetization of the system frozen.  
+
+\section{Mean Field Approximation}
+
+Using our new knowledge of the behavior of the average system spin we can approximate highly complex models using a simplified model which relies on the average spin (or average analogous interaction).  This is the core idea of behind the mean field approximation.  However, before we delve deep into this new method, let's start with a warm up problem to illustrate the why this method is so powerful.
+
+First, let's look at a trivial system which we have seen before:  A system with an external magnetic field and no spin coupling.  For such a system we have the hamiltonian:
+
+$$\mathcal{H}_{0}=-h\sum_{i}\sigi$$
+
+The partition function for this system is therefore
+
+$$Z_{0}=\sum_{\sigi}e^{-\beta\mathcal{H}_{0}}=\sum_{\sigma_{1}=\pm}e^{\beta h\sigma_{1}}\sum_{\sigma_{2}=\pm}e^{\beta h\sigma_{2}}...\sum_{\sigma_{v}=\pm}e^{\beta h\sigma_{v}}=(2\cosh{\beta h})^{v}=2^{v}\cosh{\beta h}^{v}$$
+
+Now that we have found Z we can find the magnetization, m:
+
+$$m\frac{1}{\beta}\pardif{\ln{Z_{0}}}{h}=\tanh{\beta h}$$
+
+\begin{figure}
+	\includegraphics[width=0.5\linewidth]{Scribe_Images/mag_curve.png}
+\end{figure}
+
+Now that we know how this the magnetization of this simple system behaves, let's try to fit the Ising model to this system.  As before,
+
+$$H=-J\sum_{links}\sigi\sigj-h\sum_{i}\sigi=\sum_{sites}\sigi[-\frac{J}{2}\sum_{Nearest Neighbors}\sigj-h]$$
+
+In this final form, we see that we have separated the hamiltonian into two parts: the simple sum of the individual spin sites multiplied by the sum over the nearest neighbor interactions in the presence of the external field.  We can call our second term the \textit{effective magnetic field}, or $h_{eff}$, as it represents the external field taking into account the nearest neighbor interactions.  
+
+Simplifying using this new definition, we find that the we can express our Ising model system in the same form as our trivial warm up system:
+
+$$H=-h_{eff}\sum_{sites}\sigi$$
+
+We can now apply the same techniques as the warm up to approximate the properties of our system.
+
+$$H\cong-h_{eff}\sum_{sites}\sigi=\sum_{sites}[-\frac{J}{2}(4)<\sigj>-h]$$
+
+The factor of 4 is introduced because every site within our two-dimensional lattice has 4 nearest neighbors which are contributing to spin-spin interactions.  This approximation for the hamiltonian is known as an \textit{uncontrolled approximation} because it becomes more accurate as the number of dimensions in the system increases.
+
+Solving for the effective magnetic field on our system yields:
+
+$$h_{eff}=h+2J<\sigj>=h+2J[\tanh{\beta h_{eff}}]$$
+
+This expression is known as the $mean field equation$.
+
+From our previous warm up model, we already know the expression for the system's magnetization:
+
+$$m=\tanh{\beta h_{eff}}$$  
+
+So now we can graphically display the system's behavior as we vary the temperature and effective field.  For the case where the external field is 0:
+
+\begin{figure}
+	\includegraphics[width=0.5\linewidth]{Scribe_Images/tcrit_curve.png}
+\end{figure}
+
+We see that at high temperatures, the mean field equation has only one solution: $h_{eff}=0$.  This is expected, as at high temperatures we should see no magnetization at all.  At low temperatures there are three intersections: one positive, one negative, and one at the origin.  The positive and negative intersections correspond to the states where the magnetization is positive and negative, respectively.  The origin intersection state is unstable.  While it is theoretically possible for the system to be in the zero magnetization state at low temperatures, any slight perturbation of the system will find it rapidly transitioning to either the positive or negative magnetization state.  
+
+Using the information we now have about the system, we can find an expression for the critical temperature.  The critical temperature will be the temperature for which the slope of mean field equation most closely approximates the slope of the linear $h_{eff}$ expression.  Therefore
+
+$$\frac{d}{dh_{eff}}[2J\tanh{\beta_{c}h_{eff}}=1$$
+
+In order to determine the functions behavior when $h_{eff}$ is close to but not equal to 0, we take the Taylor expansion around $h_{eff}=0$ to yield $2J\beta_{c}=1$, which is equivalent to 
+
+$$\frac{2J}{\bltz T_{c}}=1$$
+
+Giving our final expression of 
+
+$$\bltz T_{c}=2J$$
+	
+
+ 
+
+
+
+  
+    
+
+\end{document}

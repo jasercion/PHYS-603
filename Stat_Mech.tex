@@ -31,6 +31,9 @@
 \newcommand{\qmom}{\frac{\hbar^{2}}{2m}}
 \newcommand{\brad}{R_{\nu}(T)}
 \newcommand{\braddiff}{R_{\nu}(T)d\nu}
+\newcommand{\mbb}[1]{\mathbb{#1}}
+\newcommand{\aras}{\hat{a}^{\alpha^{\dagger}}(\mbb{k})}
+\newcommand{\alow}{\hat{a}^{\alpha}(\mbb{k})}
 
 \title{Lectures on Statistical Mechanics and Thermodynamics}
 \author{Paolo Bedaque}
@@ -1191,7 +1194,129 @@ Which describes the power emitted per area between frequencies $\nu$ and $\nu+d\
 
 %insert simple blackbody diagram.
 
-The electromagnetic waves inside the box are in equilibrium with the walls the same way that the molecules inside a box reach thermal equilibrium.  So, let us apply the laws of statistical mechanics to the waves inside the box.    
+The electromagnetic waves inside the box are in equilibrium with the walls the same way that the molecules inside a box reach thermal equilibrium.  So, let us apply the laws of statistical mechanics to the waves inside the box.  We need to recast Maxwell's Equations in a hamiltonian formalism to apply what we know of statistical mechanics.  For that we use the variables $\mathbb{A}(\mathbb{r},t)$ instead of $\mathbb{E}(\mathbb{r},t)$ and $\mbb{B}(\mbb{r},t)$.  We first notice that $\mbb{A}$'s differing by a \textit{Gauge Transformation} ($\mbb{A}\rightarrow\mbb{A}+\nabla X$) which corresponds to the same $\mbb{E},\mbb{B}$ (the physical observables).  We don't want to double count, that is, include two $\mbb{A}$'s in the partition function corresponding to the same physics, so we impose the following condition:
+
+$$\nabla\mbb{A}=0$$
+$$\theta=0$$
+$$\mbb{E}=-\pardif{\mbb{A}}{t}-\nabla\theta=-\pardif{\mbb{A}}{t}$$
+$$\mbb{B}=\nabla X\mbb{A}$$
+
+Where $\theta$ is the electric potential and $\mbb{A}$ is the magnetic potential.  The lagrangian for the electromagnetic field (without charges or constants) is:
+
+$$\mathcal{L}=\frac{1}{8\pi}\int d^{3}\mbb{r}[(\frac{\delta\mbb{A}}{c\delta t})^{2}-(\nabla X\mbb{A})^{2}]$$
+
+Extremeizing this lagrangian leads to $\frac{1}{c^{2}}\secpardif{\mbb{A}}{t}-\nabla^{2}\mbb{A}=0$, which is equivalent to Maxwell's equations.  Notice that there are an infinite number of possible values of $\mbb{r}$ and, consequently, an infinite number of variables $\mbb{A}(\mbb{r})$ (compare that with $q_{i}$, i=1,...,n) that we had before.  From $\mathcal{L}$ we can find the hamiltonian:
+
+$$\mbb{\Pi}(\mbb{r})=\pardif{\mathcal{H}}{\mbb{A}(\mbb{r})}=\frac{1}{4\pi c^{2}}\pardif{\mbb{A}}{t}$$
+
+$$\mathcal{H}=\int d^{3}\mbb{r}[\mbb{\Pi}(\mbb{r},t)\pardif{\mbb{A}(\mbb{r},t)}{t}-\mathcal{L}]$$
+$$\mathcal{H}=\frac{1}{8\pi}\int d^{3}\mbb{r}[(4\pi^{2})^{2}\mbb{\Pi}^{2}(\mbb{r},t)+(\nabla X\mbb{A})^{2}]$$
+
+Note that $(4\pi^{2})^{2}\mbb{\Pi}^{2}(\mbb{r},t)=\mbb{E}^{2}(\mbb{r},t)$ and $(\nabla X\mbb{A})^{2}=\mbb{B}^{2}(\mbb{r},t)$
+
+Compare the equation above to $\mathcal{H}=\sumser{i=1}{N}p_{i}\dot{q}_{i}-\mathcal{L}$.  The hamiltonian is quadratic in the momenta $\mbb{\Pi}$ and $\mbb{A}$ so we should be able to find the normal coordinates which transform it into decoupled harmonic oscillators.  We change variables to $\mbb{Q}_{k}$, $\mbb{P}_{k}$ defined by:
+
+$$\mbb{A}(\mbb{r},t)=\sqrt{\frac{4\pi c}{V}}\sum_{\mbb{k}}\mbb{Q}(\mbb{k},t)e^{i\mbb{k}\mbb{r}}$$
+$$\mbb{\Pi}(\mbb{r},t)=\frac{1}{\sqrt{4\pi c^{2}V}}\sum_{\mbb{k}}\mbb{P}(\mbb{k},t)e^{i\mbb{k}\mbb{r}}$$
+$$V=L^{3}$$
+$$\mbb{k}=\frac{2\pi}{L}(n_{x},n_{y},n_{z})$$
+$$n_{x},n_{y},n_{z}=0,\pm1,\pm2,...$$
+$$\mbb{Q}^{*}(\mbb{k})=\mbb{Q}(-\mbb{k})$$
+$$\mbb{P}^{*}(\mbb{k})=\mbb{P}(-\mbb{k})$$
+
+Since $\mbb{A}$ and $\mbb{\Pi}$ are real.  $\nabla\mbb{A}=0\rightarrow\mbb{Q}(\mbb{k})\mbb{k}=0$, $\mbb{P}(\mbb{k})\mbb{k}=0$
+
+$$\mathcal{H}=\frac{1}{2}\sum_{\mbb{k}}[\mbb{P}(\mbb{k},t)\mbb{P}(-\mbb{k},t)+c^{2}k^{2}\mbb{Q}(\mbb{k})\mbb{Q}(-\mbb{k},t)]$$
+$$c^{2}k^{2}=\omega_{k}^{2}$$
+
+This whole expression is the sum of decoupled harmonic oscillators, very much like the phonon hamiltonian.  We can now start doing statistical mechanics!  Classically, the energy density is given by the equipartition theorem:
+
+$$E=\sum_{\mbb{k}}\frac{1}{2}\bltz T*2*2\cong\infty$$
+
+The two '2' terms represent the kinetic+potential energy contributions and the two polarizations per mode, respectively.  The expression is approximately infinity since there are an infinite number of allowed values of $\mbb{k}$
+
+The divergence arises because, contrary to the phonon case, there is no cutoff at high $\mbb{k}$.  Still, the contribution from each frequency range is finite:
+
+$$\frac{E}{V}=\frac{2\bltz T}{2\pi^{2}}\int_{0}^{\infty}dk k^{2}=2\bltz T\int\dtk=\int_{0}^{\infty}d\nu\frac{\bltz T}{\pi^{2}}\frac{(2\pi)^{3}}{c^{3}}\nu^{2}$$
+
+Which is, of course, the Rayleigh-Jeans formula.  The failure of this formula at large frequencies is what precipitated the advent of quantum theory.  
+
+Now that we have the classical case out of the way, we will now work out the quantum theory.  We start by assuming that the coordinates $\mbb{A}(\mbb{r})$ and momenta $\mbb{\Pi}(\mbb{r})$ become operators satisfying the usual commutation rules.  That implies that $\mbb{Q}$ and $\mbb{P}$ become operators satisfying:
+
+$$[\hat{Q}_{i}(\mbb{k}),\hat{P}_{j}(\mbb{q}^{'})]=i\hbar\delta_{ij}\delta_{\mbb{k1-k'}}$$
+
+All the other commutators including Q's and P's vanish.  We now define:
+
+$$\hat{\alpha}^{\alpha}(\mbb{k})=[\sqrt{\frac{\omega_{k}}{2\hbar}}\hat{\mbb{Q}}({\mbb{k}})-\frac{i}{\sqrt{2\hbar\omega_{k}}}\hat{\mbb{P}}(\mbb{k})]\mbb{\epsilon}_{\mbb{k}}^{\alpha}$$
+$$\hat{\alpha}^{\dagger\alpha}(\mbb{k})=[\frac{\omega_{k}}{2\hbar}\hat{\mbb{Q}}({\mbb{-k}})-\frac{i}{\sqrt{2\hbar\omega_{k}}}\hat{\mbb{P}}(\mbb{-k})]\mbb{\epsilon}_{\mbb{k}}^{\alpha}$$
+
+then,
+
+$$[\hat{a}^{\alpha}(\mbb{k}),\hat{a}^{\beta\dagger}(\mbb{k^{'}})]=-i\sqrt{\frac{\omega_{k}}{2\hbar}}\frac{1}{\sqrt{2\hbar\omega_{k'}}}[\hat{Q}_{i}(\mbb{k}),\hat{P}_{j}(\mbb{k'})]\epsilon^{\alpha}_{i}(\mbb{k})\epsilon_{j}^{\beta}(\mbb{k'})-i\sqrt{\frac{\omega_{k'}}{2\hbar}}\frac{1}{\sqrt{2\hbar\omega_{k}}}[\hat{P}_{j}(\mbb{k}),\hat{Q}_{i}(\mbb{k'})]\epsilon_{j}^{\alpha}\epsilon^{\beta}_{i}(\mbb{k'})=\delta_{\alpha\beta}\delta_{ij}$$
+
+$$[\alow,\hat{a}^{\beta}(\mbb{k'})]=[\aras,\hat{a}^{\beta^{\dagger}}(\mbb{k'})]=0$$
+
+Thus, $\aras$ is the raising operator of the harmonic oscillator made with momentum $\mbb{k}$ and polarization $\alpha$.  In other words, $\aras$ creates a photon with momentum $\mbb{k}$ and polarization $\alpha$.  Similarly, $\alow$ destroys a photon.  The hamiltonian can be written in terms of creation/destruction operators:
+
+$$\hat{H}=\frac{1}{2}\sum_{\alpha=1,2}V\int\dtk[-\frac{\hbar\omega_{k}}{2}(\alow-\hat{a}^{\alpha^{\dagger}}(-\mbb{k}))(\hat{a}^{\alpha}(-\mbb{k})-\aras)+\omega_{k}^{2}\frac{\hbar}{2\omega_{k}}(\alow+\hat{a}^{\alpha^{\dagger}}(-\mbb{k}))(\hat{a}^{\alpha}(-\mbb{k})+\aras)]$$
+
+$$=\frac{V}{2}\sum_{\alpha=1,2}\int\dtk[\frac{\hbar\omega_{k}}{2}2\alow\aras+\frac{\hbar\omega_{k}}{2}2\aras\alow]$$
+$$=V\sum_{\alpha=1,2}\int\dtk[\aras\alow+\frac{1}{2}]\hbar\omega_{k}$$
+
+We have one oscillator per value of $\mbb{k}$ and $\alpha$.  The calculation of the partition function now follows the previous example of the phonons:
+
+$$Z=Tr[e^{-\beta\hat{H}}]=\Pi_{\mbb{k},\alpha}\sumser{n_{k}=0}{\infty}e^{-\beta\hbar\omega(n_{k}+\frac{1}{2})}$$
+$$=\Pi_{\mbb{k},\alpha}\frac{e^{-\beta\hbar\frac{\omega_{k}}{2}}}{1-e^{-\beta\hbar\omega_{k}}}=\Pi_{\mbb{k},\alpha}\frac{2}{\sinh{\beta\hbar\frac{\omega_{k}}{2}}}$$
+
+And consequently,
+
+$$F=-\bltz T\ln{Z}=\bltz T\sum_{\mbb{k},\alpha}\ln{\frac{1-e^{-\beta\hbar\omega_{k}}}{e^{-\beta\hbar\frac{\omega_{k}}{2}}}}$$
+
+$$=\bltz T\sum_{\mbb{k},\alpha}[\ln{1-e^{-\beta\hbar\omega_{k}}+\bltz T\beta\hbar\omega_{k}}]$$
+
+The term $\bltz T\beta\hbar\omega_{k}$ is T-independent, zero-point energy.  This time this term is infinite because there is no cutoff in $\mbb{K}$.  It is a contribution to the cosmological constant.
+
+$$\cong2\bltz TV\int\dtk\ln{1-e^{-\beta\hbar\omega_{k}}}+const$$
+
+Here we have 2 polarizations multiplied by the free energy of an ideal, massless gas of bosons plus a constant.  Now we can find the energy density:
+
+$$\frac{E}{V}=2\int\dtk\frac{\hbar ck}{e^{\beta\hbar ck}-1}=\frac{2}{(\beta\hbar c)^{3}}\frac{1}{2\pi^{2}}\frac{1}{\beta}\int_{0}^{\infty}dx\frac{x^{3}}{e^{x}-1}$$
+$$x=\beta\hbar ck$$
+$$\int_{0}^{\infty}dx\frac{x^{3}}{e^{x}-1}=\frac{\pi^{4}}{15}$$
+
+$$\frac{E}{V}\frac{\pi^{2}(\bltz T)^{4}}{15\hbar^{3}c^{3}}$$
+
+The above result is commonly known as the \textbf{Stefan-Boltzman Law}.
+
+Also,
+
+$$\frac{E}{V}=2\frac{1}{2\pi^{2}}\int_{0}^{\infty}dkk^{2}\frac{\hbar ck}{e^{\beta\hbar ck}-1}$$
+$$=\frac{\hbar c}{\hbar^{2}}(\frac{2\pi}{c})^{4}\int_{0}^{\infty}d\nu\frac{\nu^{3}}{e^{\beta\hbar\nu}-1}$$
+$$=\int_{0}^{\infty}d\nu\frac{16\pi^{2}\hbar}{c^{3}}\frac{\nu^{2}}{e^{\beta\hbar\nu}-1}$$
+
+$$\frac{16\pi^{2}\hbar}{c^{3}}\frac{\nu^{2}}{e^{\beta\hbar\nu}-1}=u_{T}(\nu)$$
+
+$u_{T}(\nu)$ is Planck's Law, which defines the energy per volume in the frequency range ($\nu,\nu+d\nu$).
+
+\part{Non-Ideal Systems}
+
+In this part we will explore approximation methods that allow us to approximately solve various non-ideal systems.
+
+\section{Cluster Expansion}
+
+\begin{itemize}
+	\item Method to approximately compute the thermodynamic properties of gases
+	\item Results in an expansion in powers of the density.  Thus, it works well at low density.  It's a well controlled approximation in the sense that it becomes better and better as the density becomes smaller.
+	\item It's an example of a diagrammatic expansion.  Many features generalize to many other diagrammatic expansions.
+\end{itemize}
+
+The goal is to compute 
+
+$$Z=\int\prod_{i=1}^{N}\frac{d^{3}\mbb{r}_{i}d^{3}\mbb{p}_{i}}{N!h^{3N}}e^{-\beta[\sumser{i=1}{N}\qmom+\sum_{i<j}V(\mbb{r}_{i}-\mbb{r}_{j})]}$$
+
+We include the N! denominator to account for indistinguishability and the $h^{3N}$ because it makes Z dimensionless.  Both of these modifications are justified by the quantum calculation.
+
+ 
 
 
 

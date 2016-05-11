@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.3.13)  7 MAY 2016 18:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.3.13)  8 MAY 2016 16:42
 entering extended mode
 **./Stat_Mech.tex
 (Stat_Mech.tex
@@ -297,20 +297,20 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 (Stat_Mech.aux)
 \openout1 = `Stat_Mech.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
  ("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count118
@@ -336,7 +336,7 @@ G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 452.
 )
 \AtBeginShipoutBox=\box35
-Package hyperref Info: Link coloring OFF on input line 37.
+Package hyperref Info: Link coloring OFF on input line 40.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -346,71 +346,71 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count124
 )
-LaTeX Info: Redefining \ref on input line 37.
-LaTeX Info: Redefining \pageref on input line 37.
-LaTeX Info: Redefining \nameref on input line 37.
+LaTeX Info: Redefining \ref on input line 40.
+LaTeX Info: Redefining \pageref on input line 40.
+LaTeX Info: Redefining \nameref on input line 40.
 
 (Stat_Mech.out) (Stat_Mech.out)
 \@outlinefile=\write3
 \openout3 = `Stat_Mech.out'.
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 39.
+LaTeX Font Info:    Try loading font information for U+msa on input line 42.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 39.
+LaTeX Font Info:    Try loading font information for U+msb on input line 42.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-<Images/mic_to_mac.png, id=123, 481.8pt x 481.8pt>
+<Images/mic_to_mac.png, id=135, 481.8pt x 481.8pt>
 File: Images/mic_to_mac.png Graphic file (type png)
  <use Images/mic_to_mac.png>
-Package pdftex.def Info: Images/mic_to_mac.png used on input line 46.
+Package pdftex.def Info: Images/mic_to_mac.png used on input line 49.
 (pdftex.def)             Requested size: 172.5pt x 172.4995pt.
 
-<Images/fig_1_1.png, id=125, 314.17375pt x 286.06876pt>
+<Images/fig_1_1.png, id=137, 314.17375pt x 286.06876pt>
 File: Images/fig_1_1.png Graphic file (type png)
 
 <use Images/fig_1_1.png>
-Package pdftex.def Info: Images/fig_1_1.png used on input line 55.
+Package pdftex.def Info: Images/fig_1_1.png used on input line 58.
 (pdftex.def)             Requested size: 84.52594pt x 76.96458pt.
  [1
 
 {C:/Users/Joe/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2 <./Images/
 mic_to_mac.png> <./Images/fig_1_1.png>] [3]
-Overfull \hbox (12.80598pt too wide) in paragraph at lines 119--120
+Overfull \hbox (12.80598pt too wide) in paragraph at lines 122--123
 \OT1/cmr/m/n/10 tem, $ [](\OML/cmm/m/it/10 E[]; V[]; N[]\OT1/cmr/m/n/10 )$ is t
 he num-ber of mi-crostates of sub-sys-tem 1, and $ [](\OML/cmm/m/it/10 E[]; V[]
 ; N[]\OT1/cmr/m/n/10 )$
  []
 
 [4] [5]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 185.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 188.
 
  ("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 185.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 188.
 
-Underfull \hbox (badness 10000) in paragraph at lines 188--191
+Underfull \hbox (badness 10000) in paragraph at lines 191--194
 
  []
 
 [6]
-Overfull \hbox (12.55127pt too wide) in paragraph at lines 235--235
+Overfull \hbox (12.55127pt too wide) in paragraph at lines 238--238
 []\OT1/cmr/bx/n/14.4 Non-Relativistic, Non-Interacting, Monoatomic
  []
 
 
-Overfull \hbox (595.46083pt too wide) in alignment at lines 247--249
+Overfull \hbox (595.46083pt too wide) in alignment at lines 250--252
 [] []
  []
 
 [7] [8]
-Overfull \hbox (127.2731pt too wide) detected at line 311
+Overfull \hbox (127.2731pt too wide) detected at line 314
 \OML/cmm/m/it/10 E\OT1/cmr/m/n/10 ([]\OML/cmm/m/it/10 ; []; \OT1/cmr/m/n/10 1) 
 = [][] \OML/cmm/m/it/10 d\OT1/cmr/m/n/10 ([])\OML/cmm/m/it/10 T\OT1/cmr/m/n/10 
 ([]\OML/cmm/m/it/10 ; []; \OT1/cmr/m/n/10 1) + \OML/cmm/m/it/10 E\OT1/cmr/m/n/1
@@ -423,23 +423,23 @@ it/10 ; \OT1/cmr/m/n/10 1)
  []
 
 
-Overfull \hbox (32.6265pt too wide) in paragraph at lines 317--317
+Overfull \hbox (32.6265pt too wide) in paragraph at lines 320--320
 []\OT1/cmr/bx/n/12 EXAMPLE: Non-relativistic, Monoatomic, Non-interacting
  []
 
 [9] [10] [11] [12] [13] [14] [15]
-Overfull \hbox (14.49127pt too wide) in paragraph at lines 531--531
+Overfull \hbox (14.49127pt too wide) in paragraph at lines 534--534
 []\OT1/cmr/bx/n/14.4 Helmholtz Free En-ergy and the Par-ti-tion Func-
  []
 
 [16] [17] [18] [19] [20] [21]
-Overfull \hbox (33.11104pt too wide) in paragraph at lines 727--727
+Overfull \hbox (33.11104pt too wide) in paragraph at lines 730--730
  []$[] [] \OML/cmm/m/it/10 dqdpe[]f\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 q; p\OT1/c
 mr/m/n/10 )\OML/cmm/m/it/10 ; Z \OT1/cmr/m/n/10 =$ 
  []
 
 
-Overfull \hbox (96.35387pt too wide) detected at line 743
+Overfull \hbox (96.35387pt too wide) detected at line 746
 \OML/cmm/m/it/10 < A >\OT1/cmr/m/n/10 =\OML/cmm/m/it/10 < \OT1/cmr/m/n/10 	\OMS
 /cmsy/m/n/10 j[]j\OT1/cmr/m/n/10 	 \OML/cmm/m/it/10 >\OT1/cmr/m/n/10 = \OMS/cms
 y/m/n/10 j\OML/cmm/m/it/10 \OMS/cmsy/m/n/10 j[] \OML/cmm/m/it/10 < \OT1/cmr/m/
@@ -453,7 +453,7 @@ n/10 +\OMS/cmsy/m/n/10 j\OML/cmm/m/it/10 \OMS/cmsy/m/n/10 j[] \OML/cmm/m/it/10
  []
 
 [22]
-Overfull \hbox (62.89456pt too wide) detected at line 747
+Overfull \hbox (62.89456pt too wide) detected at line 750
 \OML/cmm/m/it/10 < A >\OT1/cmr/m/n/10 = \OML/cmm/m/it/10 p[] < \OT1/cmr/m/n/10 
 	[]\OMS/cmsy/m/n/10 j[]j\OT1/cmr/m/n/10 	[] \OML/cmm/m/it/10 > \OT1/cmr/m/n/10 
 +\OML/cmm/m/it/10 p[] < \OT1/cmr/m/n/10 	[]\OMS/cmsy/m/n/10 j[]j\OT1/cmr/m/n/10
@@ -465,7 +465,7 @@ sy/m/n/10 j\OT1/cmr/m/n/10 )[]] = \OML/cmm/m/it/10 Tr\OT1/cmr/m/n/10 [[][]]
  []
 
 [23] [24] [25]
-Overfull \hbox (48.05956pt too wide) detected at line 838
+Overfull \hbox (48.05956pt too wide) detected at line 841
 \OML/cmm/m/it/10 E \OT1/cmr/m/n/10 = 
  + \OML/cmm/m/it/10 TS \OT1/cmr/m/n/10 + \OML/cmm/m/it/10 N \OT1/cmr/m/n/10 = 
 \OMS/cmsy/m/n/10 \OML/cmm/m/it/10 V [] []\OT1/cmr/m/n/10 [[] [] + (1 + \OML/cm
@@ -476,7 +476,7 @@ y/m/n/10  \OML/cmm/m/it/10 n\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 k\OT1/cmr/m/n/10
  []
 
 
-Overfull \hbox (0.59267pt too wide) in paragraph at lines 841--842
+Overfull \hbox (0.59267pt too wide) in paragraph at lines 844--845
 []\OT1/cmr/m/n/10 Notice that the ex-pres-sion $(1 \OMS/cmsy/m/n/10  \OML/cmm/
 m/it/10 n\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 k\OT1/cmr/m/n/10 )) [](1 \OMS/cmsy/m
 /n/10  \OML/cmm/m/it/10 n\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 k\OT1/cmr/m/n/10 ))
@@ -487,43 +487,59 @@ mr/m/n/10 ) [] [] = \OMS/cmsy/m/n/10  [] [] $
 [26] [27]
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 913.
+(hyperref)                than one, level fixed on input line 916.
 
 
-Overfull \hbox (57.56047pt too wide) detected at line 939
+Overfull \hbox (57.56047pt too wide) detected at line 942
 \OT1/cmr/m/n/10 = \OML/cmm/m/it/10  [][] []\OT1/cmr/m/n/10 [\OML/cmm/m/it/10 
 [] \OT1/cmr/m/n/10 + []\OML/cmm/m/it/10 [] \OT1/cmr/m/n/10 + [](\OML/cmm/m/it/
 10  \OT1/cmr/m/n/10 + [])(\OML/cmm/m/it/10  \OMS/cmsy/m/n/10   []\OT1/cmr/m/n
 /10 ) + \OML/cmm/m/it/10 :::\OT1/cmr/m/n/10 ] \OMS/cmsy/m/n/10  []
  []
 
-[28] [29] [30] [31] [32] [33] [34] [35] [36]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1198.
- [37]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1198.
+[28] [29] [30] [31] [32] [33] [34] [35] [36] [37] [38]
+Overfull \hbox (129.61565pt too wide) detected at line 1255
+\OT1/cmr/m/n/10 [[](\U/msb/m/n/10 k\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; []\OT1/c
+mr/m/n/10 ([])] = \OMS/cmsy/m/n/10  \OML/cmm/m/it/10 i[][]\OT1/cmr/m/n/10 [[](\
+U/msb/m/n/10 k\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; []\OT1/cmr/m/n/10 ([])]\OML/c
+mm/m/it/10 []\OT1/cmr/m/n/10 (\U/msb/m/n/10 k\OT1/cmr/m/n/10 )\OML/cmm/m/it/10
+ []\OT1/cmr/m/n/10 ([]) \OMS/cmsy/m/n/10   \OML/cmm/m/it/10 i[][]\OT1/cmr/m/n/
+10 [[](\U/msb/m/n/10 k\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; []\OT1/cmr/m/n/10 ([]
+)]\OML/cmm/m/it/10 [][]\OT1/cmr/m/n/10 ([]) = \OML/cmm/m/it/10 [][]
+ []
+
+
+Overfull \hbox (131.05864pt too wide) detected at line 1261
+[] \OT1/cmr/m/n/10 = [] [] \OML/cmm/m/it/10 V [] []\OT1/cmr/m/n/10 [\OMS/cmsy/m
+/n/10  []\OT1/cmr/m/n/10 ([](\U/msb/m/n/10 k\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 
+  []\OT1/cmr/m/n/10 (\OMS/cmsy/m/n/10  \U/msb/m/n/10 k\OT1/cmr/m/n/10 ))([](\OM
+S/cmsy/m/n/10  \U/msb/m/n/10 k\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10   []\OT1/cmr/m
+/n/10 (\U/msb/m/n/10 k\OT1/cmr/m/n/10 )) + \OML/cmm/m/it/10 ![][]\OT1/cmr/m/n/1
+0 ([](\U/msb/m/n/10 k\OT1/cmr/m/n/10 ) + [](\OMS/cmsy/m/n/10  \U/msb/m/n/10 k\O
+T1/cmr/m/n/10 ))([](\OMS/cmsy/m/n/10  \U/msb/m/n/10 k\OT1/cmr/m/n/10 ) + [](\U/
+msb/m/n/10 k\OT1/cmr/m/n/10 ))]
+ []
+
+[39] [40]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1323.
+ [41]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1323.
  (Stat_Mech.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1198.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1198.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1323.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1323.
 
-
-
-Package rerunfilecheck Warning: File `Stat_Mech.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `Stat_Mech.out':
-(rerunfilecheck)             Before: C96A0082697F51B36400AFE25AE11CAF;2381
-(rerunfilecheck)             After:  E91777F1EC96E831FD75072872BECC8F;2456.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1198.
+Package rerunfilecheck Info: File `Stat_Mech.out' has not changed.
+(rerunfilecheck)             Checksum: B0DD2459468D696B42C25AC56704AC2A;2570.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1323.
  ) 
 Here is how much of TeX's memory you used:
- 6766 strings out of 493622
- 96823 string characters out of 3143650
- 196626 words of memory out of 3000000
- 10017 multiletter control sequences out of 15000+200000
+ 6778 strings out of 493622
+ 96910 string characters out of 3143650
+ 196669 words of memory out of 3000000
+ 10023 multiletter control sequences out of 15000+200000
  12156 words of font info for 47 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
- 29i,21n,28p,1218b,368s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 29i,21n,28p,1218b,386s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Fi
 les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKT
@@ -542,9 +558,9 @@ c/amsfonts/cm/cmti10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfon
 ts/symbols/msbm10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/
 symbols/msbm5.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symb
 ols/msbm7.pfb>
-Output written on Stat_Mech.pdf (37 pages, 424008 bytes).
+Output written on Stat_Mech.pdf (41 pages, 445382 bytes).
 PDF statistics:
- 388 PDF objects out of 1000 (max. 8388607)
- 74 named destinations out of 1000 (max. 500000)
- 251 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 416 PDF objects out of 1000 (max. 8388607)
+ 80 named destinations out of 1000 (max. 500000)
+ 275 words of extra memory for PDF output out of 10000 (max. 10000000)
 
